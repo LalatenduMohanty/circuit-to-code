@@ -6,7 +6,7 @@ regression where raw ``<`` in text (e.g. ``A <-> B``) produces invalid XML.
 Test strategy
 -------------
 * Contract unit tests — synthetic fixtures prove each validation layer fires.
-* Repo inventory — every ``diagrams/**/*.svg`` must pass validation.
+* Repo inventory — every ``lessons/**/diagrams/**/*.svg`` must pass validation.
 * Markdown coupling — every local ``![](...svg)`` in lessons must exist and
   pass the same validator (prevents “file exists but is broken”).
 """
@@ -149,7 +149,7 @@ def test_assert_valid_svg_passes_for_good(tmp_path: Path) -> None:
 
 
 def test_diagrams_directory_has_svgs() -> None:
-    assert _REPO_SVGS, "expected at least one SVG under diagrams/"
+    assert _REPO_SVGS, "expected at least one SVG under lessons/"
 
 
 @pytest.mark.parametrize(
@@ -163,11 +163,7 @@ def test_each_diagram_svg_is_valid(svg_path: Path) -> None:
 
 def test_markdown_svg_references_are_valid(repo_root: Path) -> None:
     """Every local SVG embedded from Markdown must pass validation."""
-    md_files = sorted(
-        path
-        for path in repo_root.rglob("*.md")
-        if ".hatch" not in path.parts and "node_modules" not in path.parts
-    )
+    md_files = sorted((repo_root / "lessons").rglob("*.md"))
     pattern = re.compile(r"!\[[^\]]*\]\(([^)]+\.svg)\)", re.IGNORECASE)
     refs: list[tuple[Path, str]] = []
     for md_file in md_files:

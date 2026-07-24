@@ -1,7 +1,7 @@
 # Developer guide
 
 Notes for working on this repository (tooling, tests, PDF build). Lesson content lives
-in `beginner.md`, not here.
+under `lessons/`, not here.
 
 ## Prerequisites
 
@@ -57,14 +57,29 @@ mdformat 1.x reads **`.mdformat.toml`** (not `[tool.mdformat]` in `pyproject.tom
 
 ## Layout
 
-| Path                   | Purpose                                       |
-| ---------------------- | --------------------------------------------- |
-| `beginner.md`          | Lesson content                                |
-| `diagrams/`            | SVG schematics embedded by the lessons        |
-| `src/circuit_to_code/` | PDF generation package                        |
-| `tests/`               | pytest suite (including SVG validation)       |
-| `docs/`                | Developer docs (excluded from the lesson PDF) |
-| `pdf/`                 | Generated PDF output (gitignored)             |
+| Path                   | Purpose                                         |
+| ---------------------- | ----------------------------------------------- |
+| `lessons/`             | Course modules (`NN-slug/`) and syllabus        |
+| `lessons/NN-slug/`     | One module: lesson markdown + optional diagrams |
+| `src/circuit_to_code/` | PDF generation package                          |
+| `tests/`               | pytest suite (including SVG validation)         |
+| `docs/`                | Developer docs (excluded from the lesson PDF)   |
+| `pdf/`                 | Generated PDF output (versioned files tracked)  |
+
+## Course modules
+
+Numbered folders under `lessons/` define the recommended path and PDF order:
+
+1. `01-scratch` — Scratch programming
+2. `02-circuits` — breadboard electronics
+3. `03-microbit` — BBC micro:bit V2
+
+### Adding a module
+
+Create the next numbered folder under `lessons/`, for example `04-spike-prime/`, put the
+lesson markdown inside, and keep module-specific images in that folder’s `diagrams/`
+directory. Zero-padded numbers keep GitHub and the printable PDF in the same order. The
+learner-facing syllabus lives in [`lessons/README.md`](../lessons/README.md).
 
 ## CI
 
@@ -75,6 +90,6 @@ GitHub Actions (`.github/workflows/ci.yml`) runs:
 
 ## SVG diagrams
 
-Lesson SVGs under `diagrams/` must be well-formed XML (UTF-8, valid `<svg>`). Tests in
-`tests/test_svg_diagrams.py` catch common breaks such as raw `<` in text (`A <-> B` →
-use `A to B` or `&lt;`).
+Lesson SVGs under `lessons/**/diagrams/` must be well-formed XML (UTF-8, valid `<svg>`).
+Tests in `tests/test_svg_diagrams.py` catch common breaks such as raw `<` in text
+(`A <-> B` → use `A to B` or `&lt;`).

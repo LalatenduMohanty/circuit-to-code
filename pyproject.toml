@@ -9,7 +9,7 @@ build-backend = "hatchling.build"
 [project]
 name = "circuit-to-code"
 description = "Circuit to Code — hands-on electronics lessons that lead toward programming and embedded projects, with PDF generation"
-readme = "beginner.md"
+readme = "README.md"
 requires-python = ">=3.10"
 license = "Apache-2.0"
 dynamic = ["version"]
@@ -89,19 +89,19 @@ path = ".hatch/env/lint"
 py = "ruff check {args:.}"
 py-format = "ruff format --check {args:.}"
 types = "mypy {args:src tests hatch_build.py version.py}"
-md = "mdformat --check {args:README.md beginner.md docs}"
+md = "mdformat --check {args:README.md lessons docs}"
 # Auto-fix locally.
 fmt = [
   "ruff check --fix .",
   "ruff format .",
-  "mdformat README.md beginner.md docs",
+  "mdformat README.md lessons docs",
 ]
 # Full lint gate used by CI / `hatch run lint:check`.
 check = [
   "ruff check .",
   "ruff format --check .",
   "mypy src tests hatch_build.py version.py",
-  "mdformat --check README.md beginner.md docs",
+  "mdformat --check README.md lessons docs",
 ]
 
 [tool.pytest.ini_options]
@@ -113,7 +113,7 @@ addopts = "-ra"
 target-version = "py310"
 line-length = 88
 src = ["src", "tests"]
-extend-exclude = [".hatch", "pdf", "diagrams"]
+extend-exclude = [".hatch", "pdf", "lessons"]
 
 [tool.ruff.lint]
 select = [

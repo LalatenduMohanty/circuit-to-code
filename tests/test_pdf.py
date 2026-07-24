@@ -39,8 +39,20 @@ def test_html_document_includes_version_banner(repo_root: Path) -> None:
     assert f'href="{REPO_URL}"' in document
 
 
+def test_html_document_includes_table_of_contents(repo_root: Path) -> None:
+    md_files = find_markdown_files(repo_root)
+    document = build_html_document(repo_root, md_files, version="0.2.0")
+    assert 'class="toc"' in document
+    assert "<h1>Contents</h1>" in document
+    assert "Learning Scratch Programming" in document
+    assert "Beginner Circuits" in document
+    assert "Guide to micro:bit V2" in document
+    assert "target-counter(attr(href), page)" in document
+    assert 'href="#lessons-01-scratch-scratch-programming-1"' in document
+
+
 def test_markdown_to_html_rewrites_local_images(repo_root: Path) -> None:
-    beginner = repo_root / "beginner.md"
+    beginner = repo_root / "lessons" / "02-circuits" / "beginner.md"
     html = markdown_to_html(beginner)
     assert "file://" in html
     assert "symbols-legend.svg" in html

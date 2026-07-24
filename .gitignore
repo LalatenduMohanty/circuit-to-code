@@ -12,3 +12,5 @@ venv/
 .mypy_cache/
 .ruff_cache/
 *.whl
+.DS_Store
+.cursor/

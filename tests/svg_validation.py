@@ -79,11 +79,11 @@ def validate_svg_path(path: Path) -> list[str]:
 
 
 def discover_svg_files(repo_root: Path) -> list[Path]:
-    """All lesson SVGs under diagrams/ (sorted for stable pytest IDs)."""
-    diagrams = repo_root / "diagrams"
-    if not diagrams.is_dir():
+    """All lesson SVGs under lessons/**/diagrams/ (sorted for stable pytest IDs)."""
+    lessons = repo_root / "lessons"
+    if not lessons.is_dir():
         return []
-    return sorted(diagrams.rglob("*.svg"))
+    return sorted(lessons.rglob("*.svg"))
 
 
 def assert_valid_svg(path: Path) -> None:

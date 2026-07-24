@@ -18,25 +18,8 @@ PROJECT_TAGLINE = (
 )
 COPYRIGHT_LINE = "Copyright 2026 Lalatendu Mohanty. Licensed under Apache License 2.0."
 
-SKIP_DIR_NAMES = {
-    ".git",
-    ".hg",
-    ".svn",
-    ".venv",
-    "venv",
-    "env",
-    "__pycache__",
-    "node_modules",
-    ".tox",
-    ".mypy_cache",
-    ".pytest_cache",
-    ".cursor",
-    ".hatch",
-    "dist",
-    "pdf",
-    "src",
-    "docs",  # developer docs — not part of the student PDF
-}
+# Lesson markdown lives only under lessons/ (numbered modules).
+LESSONS_DIR_NAME = "lessons"
 
 # Repo meta docs — keep out of the printable lesson PDF.
 SKIP_FILE_NAMES = {
@@ -185,12 +168,48 @@ hr {{
   margin: 1.5em 0;
 }}
 
-.md-section {{
-  page-break-before: always;
+.toc {{
+  page-break-after: always;
 }}
 
-.md-section:first-of-type {{
-  page-break-before: avoid;
+.toc h1 {{
+  font-size: 20pt;
+  margin-top: 0;
+}}
+
+.toc-list {{
+  list-style: none;
+  padding: 0;
+  margin: 0.5em 0 0 0;
+}}
+
+.toc-item {{
+  margin: 0.25em 0;
+  line-height: 1.35;
+}}
+
+.toc-item-h1 {{
+  margin-top: 0.7em;
+  font-weight: 600;
+}}
+
+.toc-item-h2 {{
+  margin-left: 1.25em;
+  font-size: 10.5pt;
+  font-weight: 400;
+}}
+
+.toc a {{
+  color: #1a1a1a;
+  text-decoration: none;
+}}
+
+.toc a::after {{
+  content: leader(".") target-counter(attr(href), page);
+}}
+
+.md-section {{
+  page-break-before: always;
 }}
 
 .md-source {{
@@ -202,27 +221,19 @@ hr {{
 
 
 def find_markdown_files(repo_root: Path) -> list[Path]:
-    """Return markdown files under repo_root, sorted for a sensible PDF order."""
+    """Return lesson markdown under lessons/, sorted by module path order."""
+    lessons_root = repo_root / LESSONS_DIR_NAME
+    if not lessons_root.is_dir():
+        return []
+
     files: list[Path] = []
-    for path in repo_root.rglob("*.md"):
-        if any(part in SKIP_DIR_NAMES for part in path.parts):
-            continue
+    for path in lessons_root.rglob("*.md"):
         if path.name.lower() in SKIP_FILE_NAMES:
             continue
         files.append(path)
 
-    def sort_key(path: Path) -> tuple[int, str]:
-        rel = path.relative_to(repo_root).as_posix().lower()
-        name = path.name.lower()
-        if name.startswith("beginner"):
-            group = 0
-        elif name in {"index.md"}:
-            group = 1
-        else:
-            group = 2
-        return (group, rel)
-
-    return sorted(files, key=sort_key)
+    # Zero-padded module folders (01-scratch, 02-circuits, …) sort naturally.
+    return sorted(files, key=lambda path: path.relative_to(repo_root).as_posix().lower())
 
 
 def rewrite_image_sources(html_fragment: str, md_file: Path) -> str:
@@ -258,6 +269,64 @@ def markdown_to_html(md_file: Path) -> str:
     return rewrite_image_sources(body, md_file)
 
 
+_HEADING_RE = re.compile(r"<h([12])(\s[^>]*)?>(.*?)</h\1>", re.IGNORECASE | re.DOTALL)
+_TAG_RE = re.compile(r"<[^>]+>")
+
+
+def _plain_heading_text(inner_html: str) -> str:
+    return html.unescape(_TAG_RE.sub("", inner_html)).strip()
+
+
+def _slug_prefix(md_file: Path, repo_root: Path) -> str:
+    rel = md_file.relative_to(repo_root).with_suffix("").as_posix()
+    return re.sub(r"[^a-zA-Z0-9]+", "-", rel).strip("-").lower()
+
+
+def assign_heading_ids(
+    body_html: str,
+    id_prefix: str,
+) -> tuple[str, list[tuple[int, str, str]]]:
+    """Give H1/H2 unique ids and return (html, toc entries of level/text/id)."""
+    entries: list[tuple[int, str, str]] = []
+    counter = 0
+
+    def replacer(match: re.Match[str]) -> str:
+        nonlocal counter
+        level = int(match.group(1))
+        attrs = match.group(2) or ""
+        inner = match.group(3)
+        text = _plain_heading_text(inner)
+        if not text:
+            return match.group(0)
+        counter += 1
+        heading_id = f"{id_prefix}-{counter}"
+        attrs = re.sub(r"""\s+id\s*=\s*(['"]).*?\1""", "", attrs, flags=re.IGNORECASE)
+        entries.append((level, text, heading_id))
+        return f'<h{level}{attrs} id="{html.escape(heading_id, quote=True)}">{inner}</h{level}>'
+
+    return _HEADING_RE.sub(replacer, body_html), entries
+
+
+def build_toc_html(entries: list[tuple[int, str, str]]) -> str:
+    if not entries:
+        return ""
+    items: list[str] = []
+    for level, text, heading_id in entries:
+        css = "toc-item toc-item-h1" if level == 1 else "toc-item toc-item-h2"
+        items.append(
+            f'<li class="{css}">'
+            f'<a href="#{html.escape(heading_id, quote=True)}">'
+            f"{html.escape(text)}</a></li>"
+        )
+    joined = "\n".join(items)
+    return (
+        f'<nav class="toc" aria-label="Table of contents">'
+        f"<h1>Contents</h1>"
+        f'<ul class="toc-list">{joined}</ul>'
+        f"</nav>"
+    )
+
+
 def build_html_document(
     repo_root: Path,
     md_files: list[Path],
@@ -265,17 +334,23 @@ def build_html_document(
 ) -> str:
     version = version or __version__
     sections: list[str] = []
+    toc_entries: list[tuple[int, str, str]] = []
+
     for md_file in md_files:
         rel = md_file.relative_to(repo_root).as_posix()
+        prefix = _slug_prefix(md_file, repo_root)
         body = markdown_to_html(md_file)
+        body, entries = assign_heading_ids(body, prefix)
+        toc_entries.extend(entries)
         sections.append(
-            f'<section class="md-section">'
+            f'<section class="md-section" id="{html.escape(prefix, quote=True)}">'
             f'<p class="md-source">Source: {html.escape(rel)}</p>'
             f"{body}"
             f"</section>"
         )
 
     joined = "\n".join(sections)
+    toc = build_toc_html(toc_entries)
     banner = (
         f'<header class="doc-banner">'
         f"<h1>Circuit to Code</h1>"
@@ -295,6 +370,7 @@ def build_html_document(
 </head>
 <body>
 {banner}
+{toc}
 {joined}
 </body>
 </html>

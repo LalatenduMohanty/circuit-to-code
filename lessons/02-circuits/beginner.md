@@ -1,8 +1,13 @@
-# Circuit to Code
+# Beginner Circuits
 
 Welcome to the hardware lab! Whether you already code in Scratch, build with LEGO Spike
 Prime, or are just getting started with electronics, this guide helps you learn circuits
 and components — the foundation for programming real embedded projects.
+
+**Path so far:** If you are following the course in order, you may already know
+[Scratch](../01-scratch/scratch-programming.md). The same ideas — loops, “when something
+happens,” and and/or logic — show up here as wires and parts. After these missions,
+continue to the [micro:bit V2 guide](../03-microbit/microbit-v2.md).
 
 In coding, you build with blocks or text. Here, you are going to build with electrons.
 This guide has **Mission 0 (safety)** plus **8 circuit missions**. For each circuit, you
@@ -73,7 +78,7 @@ little spare), **plus** the 9V battery and adapter above:
 
 ______________________________________________________________________
 
-## 🛠️ Mission 0: The Maker Rules
+## Mission 0: The Maker Rules
 
 Before you plug in a single wire, remember these rules:
 
@@ -140,7 +145,7 @@ A breadboard is a plastic board full of holes that connect inside — like LEGO 
 
 ______________________________________________________________________
 
-## 🔧 If it doesn’t work (Troubleshoot)
+## If it doesn’t work (Troubleshoot)
 
 Check these in order:
 
@@ -171,7 +176,7 @@ circle (a circuit) from the Positive (+) power to the Negative (−) Ground.
 
 **Symbols in this circuit:** `+5V` · resistor · LED · `GND`
 
-#### 🔭 The Discovery (Observation)
+#### The Discovery (Observation)
 
 **Experiment:** Once the light is on, pull one end of the resistor out of the
 breadboard.
@@ -213,7 +218,7 @@ They click when pressed and spring back when you let go.
 
 **Symbols in this circuit:** `+5V` · switch (tactile button) · resistor · LED · `GND`
 
-#### 🔭 The Discovery (Observation)
+#### The Discovery (Observation)
 
 **Experiment:** Press the button. The LED lights up immediately. Let go, and it turns
 off.
@@ -246,7 +251,7 @@ ______________________________________________________________________
 **Symbols in this circuit:** two ways to connect the same parts — **series** (one path)
 vs **parallel** (forked paths)
 
-#### 🔭 The Discovery (Observation)
+#### The Discovery (Observation)
 
 **Experiment:** Compare the brightness of the LEDs in Build A vs Build B.
 
@@ -286,7 +291,7 @@ jumper (recommended), or leave it empty.
 *(If turning the knob the “wrong way” makes it brighter when you expected dimmer, move
 the +5V wire to the other outer pin instead.)*
 
-#### 🔭 The Discovery (Observation)
+#### The Discovery (Observation)
 
 **Experiment:** Slowly turn the potentiometer knob back and forth.
 
@@ -316,7 +321,7 @@ kit!
 **Symbols in this circuit:** LDR (resistor in a circle with light arrows) · resistor ·
 LED
 
-#### 🔭 The Discovery (Observation)
+#### The Discovery (Observation)
 
 **Experiment:** Cover the photoresistor tightly with your thumb to block the room light.
 
@@ -351,7 +356,7 @@ Emitter goes to GND.
 
 **Symbols in this circuit:** two switches · 10kΩ · NPN transistor · 220Ω · LED
 
-#### 🔭 The Discovery (Observation)
+#### The Discovery (Observation)
 
 **Experiment:** Press only Switch A. Then press only Switch B. Finally, press both
 switches at the same time.
@@ -382,7 +387,7 @@ LED.
 > After you finish, unplug power. Capacitors can hold a little charge for a moment —
 > that’s why the LED fades!
 
-#### 🔭 The Discovery (Observation)
+#### The Discovery (Observation)
 
 **Experiment:** Hold the button down for 3 seconds. Then let go.
 
@@ -427,7 +432,7 @@ resistors · two LEDs
 4. C2 from Q2 collector toward Q1 base (through 10kΩ at the base).
 5. Capacitor **+** toward the collector side; stripe toward the base side.
 
-#### 🔭 The Discovery (Observation)
+#### The Discovery (Observation)
 
 **Experiment:** Wire this up carefully. You do not need to press any buttons. Just
 connect power and watch.
@@ -441,3 +446,15 @@ pulse — a simple version of how electronic circuits can make a steady “tick-
 here!).
 
 **You built it!** You learned: circuits can create loops in hardware, not only in code.
+
+______________________________________________________________________
+
+## What’s next
+
+You can now read a schematic, protect an LED, use a switch and sensors, and build simple
+logic and timing in hardware.
+
+1. Continue to the [Guide to micro:bit V2](../03-microbit/microbit-v2.md) to connect
+   coding blocks (MakeCode) to a real board with sensors and outputs.
+2. Revisit [Learning Scratch Programming](../01-scratch/scratch-programming.md) anytime
+   you want more practice with the same logic ideas in software.

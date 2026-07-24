@@ -4,10 +4,11 @@ Hands-on electronics lessons for anyone learning circuits and components — a p
 programming and real-world embedded projects (Scratch / LEGO Spike Prime friendly), with
 schematics and a printable PDF.
 
-Lesson content: [`beginner.md`](beginner.md)
+**Start here:** course path and full contents are in
+[`lessons/README.md`](lessons/README.md) (Scratch → Circuits → micro:bit).
 
 **Download the printable PDF:**
-[`pdf/circuit-to-code-v0.1.0.pdf`](pdf/circuit-to-code-v0.1.0.pdf)
+[`pdf/circuit-to-code-v0.2.0.pdf`](pdf/circuit-to-code-v0.2.0.pdf)
 
 ## Generate the PDF
 
@@ -34,7 +35,7 @@ hatch run pdf
 This writes a versioned file under `pdf/`, for example:
 
 ```text
-pdf/circuit-to-code-v0.1.0.pdf
+pdf/circuit-to-code-v0.2.0.pdf
 ```
 
 ### Other ways to build
@@ -55,8 +56,8 @@ hatch run build
 
 ### What goes into the PDF
 
-Markdown lessons in the repo (currently `beginner.md`) plus embedded SVGs from
-`diagrams/`. Developer docs under `docs/` and this README are not included.
+Markdown lessons under `lessons/` (in numbered module order) plus their embedded
+diagrams. Developer docs under `docs/` and this README are not included.
 
 ## More developer commands
 

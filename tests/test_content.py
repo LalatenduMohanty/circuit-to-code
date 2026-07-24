@@ -12,27 +12,35 @@ from svg_validation import assert_valid_svg
 
 # Explicit curriculum checklist — rename/remove must be intentional.
 REQUIRED_DIAGRAMS = [
-    "diagrams/symbols-legend.svg",
-    "diagrams/circuit-01-led-loop.svg",
-    "diagrams/circuit-02-switch.svg",
-    "diagrams/circuit-02-tactile-button.svg",
-    "diagrams/circuit-03-series-parallel.svg",
-    "diagrams/circuit-04-potentiometer.svg",
-    "diagrams/circuit-05-photoresistor.svg",
-    "diagrams/circuit-06-and-gate.svg",
-    "diagrams/circuit-07-capacitor.svg",
-    "diagrams/circuit-08-flasher.svg",
+    "lessons/02-circuits/diagrams/symbols-legend.svg",
+    "lessons/02-circuits/diagrams/circuit-01-led-loop.svg",
+    "lessons/02-circuits/diagrams/circuit-02-switch.svg",
+    "lessons/02-circuits/diagrams/circuit-02-tactile-button.svg",
+    "lessons/02-circuits/diagrams/circuit-03-series-parallel.svg",
+    "lessons/02-circuits/diagrams/circuit-04-potentiometer.svg",
+    "lessons/02-circuits/diagrams/circuit-05-photoresistor.svg",
+    "lessons/02-circuits/diagrams/circuit-06-and-gate.svg",
+    "lessons/02-circuits/diagrams/circuit-07-capacitor.svg",
+    "lessons/02-circuits/diagrams/circuit-08-flasher.svg",
+    "lessons/03-microbit/diagrams/microbit-v2-overview.jpg",
+]
+
+LESSON_FILES = [
+    "lessons/01-scratch/scratch-programming.md",
+    "lessons/02-circuits/beginner.md",
+    "lessons/03-microbit/microbit-v2.md",
 ]
 
 
-def test_beginner_markdown_exists(repo_root: Path) -> None:
-    assert (repo_root / "beginner.md").is_file()
+def test_lesson_markdown_files_exist(repo_root: Path) -> None:
+    for relative in LESSON_FILES:
+        assert (repo_root / relative).is_file(), f"Missing lesson: {relative}"
 
 
-def test_find_markdown_files_includes_beginner(repo_root: Path) -> None:
+def test_find_markdown_files_includes_lessons_in_course_order(repo_root: Path) -> None:
     files = find_markdown_files(repo_root)
-    names = {path.name for path in files}
-    assert "beginner.md" in names
+    rels = [path.relative_to(repo_root).as_posix() for path in files]
+    assert rels == LESSON_FILES
 
 
 def test_find_markdown_files_skips_meta_docs(repo_root: Path) -> None:
@@ -40,26 +48,35 @@ def test_find_markdown_files_skips_meta_docs(repo_root: Path) -> None:
     rels = {path.relative_to(repo_root).as_posix() for path in files}
     assert "docs/developer.md" not in rels
     assert "README.md" not in rels
-    assert all(not rel.startswith(".cursor/") for rel in rels)
+    assert "lessons/README.md" not in rels
     assert (repo_root / "docs" / "developer.md").is_file()
     assert (repo_root / "README.md").is_file()
+    assert (repo_root / "lessons" / "README.md").is_file()
 
 
 @pytest.mark.parametrize("relative", REQUIRED_DIAGRAMS)
-def test_required_diagram_exists_and_is_valid(repo_root: Path, relative: str) -> None:
+def test_required_diagram_exists(repo_root: Path, relative: str) -> None:
     path = repo_root / relative
     assert path.is_file(), f"Missing diagram: {relative}"
-    assert_valid_svg(path)
+    if path.suffix.lower() == ".svg":
+        assert_valid_svg(path)
 
 
-def test_beginner_references_existing_images(repo_root: Path) -> None:
-    text = (repo_root / "beginner.md").read_text(encoding="utf-8")
+@pytest.mark.parametrize(
+    "lesson",
+    [
+        "lessons/02-circuits/beginner.md",
+        "lessons/03-microbit/microbit-v2.md",
+    ],
+)
+def test_lesson_references_existing_images(repo_root: Path, lesson: str) -> None:
+    text = (repo_root / lesson).read_text(encoding="utf-8")
     refs = re.findall(r"!\[[^\]]*\]\(([^)]+)\)", text)
-    assert refs, "beginner.md should embed schematic images"
+    assert refs, f"{lesson} should embed images"
     for ref in refs:
         if ref.startswith(("http://", "https://")):
             continue
-        target = (repo_root / ref).resolve()
-        assert target.is_file(), f"Broken image reference: {ref}"
+        target = ((repo_root / lesson).parent / ref).resolve()
+        assert target.is_file(), f"Broken image reference in {lesson}: {ref}"
         if target.suffix.lower() == ".svg":
             assert_valid_svg(target)
