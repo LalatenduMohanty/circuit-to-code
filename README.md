@@ -6,6 +6,9 @@ schematics and a printable PDF.
 
 Lesson content: [`beginner.md`](beginner.md)
 
+**Download the printable PDF:**
+[`pdf/circuit-to-code-v0.1.0.pdf`](pdf/circuit-to-code-v0.1.0.pdf)
+
 ## Generate the PDF
 
 ### Prerequisites

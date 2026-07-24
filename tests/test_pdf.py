@@ -5,6 +5,9 @@ from __future__ import annotations
 from pathlib import Path
 
 from circuit_to_code.pdf import (
+    COPYRIGHT_LINE,
+    PROJECT_TAGLINE,
+    REPO_URL,
     build_html_document,
     css_for_version,
     default_output_path,
@@ -30,6 +33,10 @@ def test_html_document_includes_version_banner(repo_root: Path) -> None:
     assert "Version 0.1.0" in document
     assert "Circuit to Code" in document
     assert 'class="doc-banner"' in document
+    assert PROJECT_TAGLINE in document
+    assert COPYRIGHT_LINE in document
+    assert REPO_URL in document
+    assert f'href="{REPO_URL}"' in document
 
 
 def test_markdown_to_html_rewrites_local_images(repo_root: Path) -> None:

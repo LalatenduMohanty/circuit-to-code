@@ -40,6 +40,7 @@ def test_find_markdown_files_skips_meta_docs(repo_root: Path) -> None:
     rels = {path.relative_to(repo_root).as_posix() for path in files}
     assert "docs/developer.md" not in rels
     assert "README.md" not in rels
+    assert all(not rel.startswith(".cursor/") for rel in rels)
     assert (repo_root / "docs" / "developer.md").is_file()
     assert (repo_root / "README.md").is_file()
 

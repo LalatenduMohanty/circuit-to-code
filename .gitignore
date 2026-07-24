@@ -1,4 +1,6 @@
-pdf/
+# Ignore everything under pdf/ except committed lesson PDFs.
+pdf/*
+!pdf/*.pdf
 *.egg-info/
 .eggs/
 __pycache__/

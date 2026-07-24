@@ -11,6 +11,13 @@ from weasyprint import HTML
 
 from circuit_to_code._version import __version__
 
+# Shown on the PDF cover so a standalone download still points back here.
+REPO_URL = "https://github.com/LalatenduMohanty/circuit-to-code"
+PROJECT_TAGLINE = (
+    "Hands-on electronics lessons toward programming and embedded projects."
+)
+COPYRIGHT_LINE = "Copyright 2026 Lalatendu Mohanty. Licensed under Apache License 2.0."
+
 SKIP_DIR_NAMES = {
     ".git",
     ".hg",
@@ -23,6 +30,8 @@ SKIP_DIR_NAMES = {
     ".tox",
     ".mypy_cache",
     ".pytest_cache",
+    ".cursor",
+    ".hatch",
     "dist",
     "pdf",
     "src",
@@ -270,8 +279,11 @@ def build_html_document(
     banner = (
         f'<header class="doc-banner">'
         f"<h1>Circuit to Code</h1>"
+        f"<p>{html.escape(PROJECT_TAGLINE)}</p>"
         f"<p>Version {html.escape(version)}</p>"
-        f"<p>Generated from Markdown lessons in this repository.</p>"
+        f"<p>{html.escape(COPYRIGHT_LINE)}</p>"
+        f'<p>Source and updates: <a href="{html.escape(REPO_URL)}">'
+        f"{html.escape(REPO_URL)}</a></p>"
         f"</header>"
     )
     return f"""<!DOCTYPE html>
