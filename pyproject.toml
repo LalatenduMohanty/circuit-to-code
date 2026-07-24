@@ -1,0 +1,173 @@
+[build-system]
+requires = [
+  "hatchling",
+  "markdown>=3.5",
+  "weasyprint>=62.0",
+]
+build-backend = "hatchling.build"
+
+[project]
+name = "circuit-to-code"
+description = "Circuit to Code — hands-on electronics lessons that lead toward programming and embedded projects, with PDF generation"
+readme = "beginner.md"
+requires-python = ">=3.10"
+license = "Apache-2.0"
+dynamic = ["version"]
+dependencies = [
+  "markdown>=3.5",
+  "weasyprint>=62.0",
+]
+
+[project.optional-dependencies]
+test = [
+  "pytest>=8.0",
+  "hatchling",
+]
+lint = [
+  "ruff>=0.9",
+  "mypy>=1.14",
+  "mdformat>=0.7",
+  "mdformat-gfm>=0.3",
+  "types-Markdown",
+]
+
+[project.scripts]
+circuit-to-code = "circuit_to_code.cli:main"
+
+[tool.hatch.version]
+path = "version.py"
+
+# PDF-only custom builder (see hatch_build.py). No wheel target.
+[tool.hatch.build.targets.custom]
+path = "hatch_build.py"
+
+[tool.hatch.envs.default]
+dependencies = [
+  "markdown>=3.5",
+  "weasyprint>=62.0",
+  "pytest>=8.0",
+  "hatchling",
+]
+path = ".hatch/env/default"
+
+[tool.hatch.envs.default.scripts]
+# Unit tests first, then PDF build — keeps the project green.
+test = "pytest -q {args:tests}"
+build = [
+  "pytest -q tests",
+  "hatch build -t custom pdf",
+]
+pdf = "circuit-to-code"
+
+[tool.hatch.envs.test]
+template = "default"
+path = ".hatch/env/test"
+
+[tool.hatch.envs.test.scripts]
+run = "pytest -q {args:tests}"
+
+[tool.hatch.envs.lint]
+detached = true
+dependencies = [
+  "ruff>=0.9",
+  "mypy>=1.14",
+  "mdformat>=0.7",
+  "mdformat-gfm>=0.3",
+  "types-Markdown",
+  "markdown>=3.5",
+  "weasyprint>=62.0",
+  "pytest>=8.0",
+  "hatchling",
+]
+path = ".hatch/env/lint"
+
+[tool.hatch.envs.lint.scripts]
+# Check-only (CI): do not rewrite files.
+# Script names must not match tool binaries (avoids Hatch circular expansion).
+# mdformat targets project docs only — `mdformat .` would walk into `.hatch/`
+# (Python 3.12 has no --exclude; exclude= in .mdformat.toml needs 3.13+).
+py = "ruff check {args:.}"
+py-format = "ruff format --check {args:.}"
+types = "mypy {args:src tests hatch_build.py version.py}"
+md = "mdformat --check {args:README.md beginner.md docs}"
+# Auto-fix locally.
+fmt = [
+  "ruff check --fix .",
+  "ruff format .",
+  "mdformat README.md beginner.md docs",
+]
+# Full lint gate used by CI / `hatch run lint:check`.
+check = [
+  "ruff check .",
+  "ruff format --check .",
+  "mypy src tests hatch_build.py version.py",
+  "mdformat --check README.md beginner.md docs",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src", "tests"]
+addopts = "-ra"
+
+[tool.ruff]
+target-version = "py310"
+line-length = 88
+src = ["src", "tests"]
+extend-exclude = [".hatch", "pdf", "diagrams"]
+
+[tool.ruff.lint]
+select = [
+  "E",   # pycodestyle errors
+  "F",   # pyflakes
+  "I",   # isort
+  "UP",  # pyupgrade
+  "B",   # flake8-bugbear
+  "SIM", # flake8-simplify
+  "RUF", # ruff-specific
+]
+ignore = [
+  "E501", # line length handled by formatter
+]
+
+[tool.ruff.lint.isort]
+known-first-party = ["circuit_to_code", "svg_validation"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+line-ending = "lf"
+docstring-code-format = true
+
+[tool.mypy]
+python_version = "3.10"
+mypy_path = "src"
+packages = ["circuit_to_code"]
+files = ["src", "tests", "hatch_build.py", "version.py"]
+strict = true
+warn_unreachable = true
+show_error_codes = true
+pretty = true
+
+[[tool.mypy.overrides]]
+module = [
+  "weasyprint",
+  "weasyprint.*",
+  "hatchling.*",
+]
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = [
+  "conftest",
+  "svg_validation",
+  "test_build",
+  "test_cli",
+  "test_content",
+  "test_pdf",
+  "test_svg_diagrams",
+  "test_version",
+]
+# Tests stay typed, but allow slightly looser fixtures/parametrize patterns.
+disallow_untyped_decorators = false
+
+# Markdown formatting options live in .mdformat.toml (mdformat 1.x).

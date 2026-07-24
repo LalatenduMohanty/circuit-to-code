@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 150" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <rect width="560" height="150" fill="#fafafa"/>
+  <text x="16" y="24" font-size="14" font-weight="700" fill="#1a1a1a">Circuit 5 - Photoresistor (LDR) Sensor</text>
+  <text x="16" y="80" font-size="13" font-weight="700" fill="#c62828">+5V</text>
+  <line x1="48" y1="76" x2="85" y2="76" stroke="#222" stroke-width="2"/>
+  <circle cx="130" cy="76" r="32" fill="none" stroke="#222" stroke-width="1.5"/>
+  <path d="M105 76 H115 L120 64 L130 88 L140 64 L150 88 L155 76 H165" fill="none" stroke="#222" stroke-width="2"/>
+  <line x1="155" y1="45" x2="170" y2="32" stroke="#222" stroke-width="1.5"/>
+  <line x1="162" y1="50" x2="177" y2="37" stroke="#222" stroke-width="1.5"/>
+  <polygon points="170,32 165,38 173,36" fill="#222"/>
+  <polygon points="177,37 172,43 180,41" fill="#222"/>
+  <text x="105" y="125" font-size="11" fill="#333">LDR</text>
+  <line x1="162" y1="76" x2="210" y2="76" stroke="#222" stroke-width="2"/>
+  <path d="M210 76 H220 L225 64 L235 88 L245 64 L255 88 L265 64 L270 76 H280" fill="none" stroke="#222" stroke-width="2"/>
+  <text x="225" y="110" font-size="11" fill="#333">220 ohm</text>
+  <line x1="280" y1="76" x2="310" y2="76" stroke="#222" stroke-width="2"/>
+  <polygon points="310,64 310,88 335,76" fill="none" stroke="#222" stroke-width="2"/>
+  <line x1="335" y1="64" x2="335" y2="88" stroke="#222" stroke-width="2.5"/>
+  <line x1="342" y1="58" x2="354" y2="46" stroke="#222" stroke-width="1.5"/>
+  <line x1="346" y1="62" x2="358" y2="50" stroke="#222" stroke-width="1.5"/>
+  <text x="310" y="110" font-size="11" fill="#333">LED</text>
+  <line x1="335" y1="76" x2="400" y2="76" stroke="#222" stroke-width="2"/>
+  <line x1="400" y1="76" x2="400" y2="100" stroke="#222" stroke-width="2"/>
+  <line x1="385" y1="100" x2="415" y2="100" stroke="#222" stroke-width="2.5"/>
+  <line x1="389" y1="106" x2="411" y2="106" stroke="#222" stroke-width="2"/>
+  <line x1="393" y1="112" x2="407" y2="112" stroke="#222" stroke-width="2"/>
+  <text x="422" y="108" font-size="12" fill="#333">GND</text>
+</svg>

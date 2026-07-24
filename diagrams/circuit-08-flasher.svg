@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <rect width="640" height="360" fill="#fafafa"/>
+  <text x="16" y="24" font-size="14" font-weight="700" fill="#1a1a1a">Circuit 8 - Astable Multivibrator (Flasher)</text>
+  <line x1="80" y1="50" x2="520" y2="50" stroke="#c62828" stroke-width="2"/>
+  <text x="530" y="54" font-size="13" font-weight="700" fill="#c62828">+5V</text>
+  <line x1="180" y1="50" x2="180" y2="75" stroke="#222" stroke-width="2"/>
+  <path d="M180 75 L180 85 L168 90 L192 100 L168 110 L192 120 L180 125 L180 135" fill="none" stroke="#222" stroke-width="2"/>
+  <text x="198" y="105" font-size="10" fill="#333">470 ohm</text>
+  <line x1="180" y1="135" x2="180" y2="150" stroke="#222" stroke-width="2"/>
+  <polygon points="165,150 195,150 180,170" fill="none" stroke="#222" stroke-width="2"/>
+  <line x1="165" y1="170" x2="195" y2="170" stroke="#222" stroke-width="2.5"/>
+  <text x="200" y="165" font-size="10" fill="#333">LED1</text>
+  <line x1="180" y1="170" x2="180" y2="210" stroke="#222" stroke-width="2"/>
+  <circle cx="180" cy="210" r="3" fill="#222"/>
+  <text x="100" y="205" font-size="10" fill="#1565c0">C (Q1)</text>
+  <line x1="420" y1="50" x2="420" y2="75" stroke="#222" stroke-width="2"/>
+  <path d="M420 75 L420 85 L408 90 L432 100 L408 110 L432 120 L420 125 L420 135" fill="none" stroke="#222" stroke-width="2"/>
+  <text x="438" y="105" font-size="10" fill="#333">470 ohm</text>
+  <line x1="420" y1="135" x2="420" y2="150" stroke="#222" stroke-width="2"/>
+  <polygon points="405,150 435,150 420,170" fill="none" stroke="#222" stroke-width="2"/>
+  <line x1="405" y1="170" x2="435" y2="170" stroke="#222" stroke-width="2.5"/>
+  <text x="440" y="165" font-size="10" fill="#333">LED2</text>
+  <line x1="420" y1="170" x2="420" y2="210" stroke="#222" stroke-width="2"/>
+  <circle cx="420" cy="210" r="3" fill="#222"/>
+  <text x="430" y="205" font-size="10" fill="#1565c0">C (Q2)</text>
+  <circle cx="180" cy="250" r="28" fill="#fafafa" stroke="#222" stroke-width="2"/>
+  <line x1="180" y1="210" x2="180" y2="230" stroke="#222" stroke-width="2"/>
+  <line x1="168" y1="238" x2="168" y2="262" stroke="#222" stroke-width="3"/>
+  <line x1="168" y1="242" x2="195" y2="228" stroke="#222" stroke-width="2"/>
+  <line x1="168" y1="258" x2="195" y2="272" stroke="#222" stroke-width="2"/>
+  <polygon points="188,268 195,272 185,275" fill="#222"/>
+  <line x1="140" y1="250" x2="168" y2="250" stroke="#222" stroke-width="2"/>
+  <text x="120" y="245" font-size="10" fill="#333">B</text>
+  <text x="155" y="295" font-size="11" fill="#333">Q1</text>
+  <line x1="195" y1="272" x2="195" y2="320" stroke="#222" stroke-width="2"/>
+  <circle cx="420" cy="250" r="28" fill="#fafafa" stroke="#222" stroke-width="2"/>
+  <line x1="420" y1="210" x2="420" y2="230" stroke="#222" stroke-width="2"/>
+  <line x1="408" y1="238" x2="408" y2="262" stroke="#222" stroke-width="3"/>
+  <line x1="408" y1="242" x2="435" y2="228" stroke="#222" stroke-width="2"/>
+  <line x1="408" y1="258" x2="435" y2="272" stroke="#222" stroke-width="2"/>
+  <polygon points="428,268 435,272 425,275" fill="#222"/>
+  <line x1="380" y1="250" x2="408" y2="250" stroke="#222" stroke-width="2"/>
+  <text x="360" y="245" font-size="10" fill="#333">B</text>
+  <text x="395" y="295" font-size="11" fill="#333">Q2</text>
+  <line x1="435" y1="272" x2="435" y2="320" stroke="#222" stroke-width="2"/>
+  <line x1="180" y1="210" x2="240" y2="210" stroke="#222" stroke-width="2"/>
+  <text x="230" y="200" font-size="10" fill="#c62828">+</text>
+  <line x1="240" y1="195" x2="240" y2="225" stroke="#222" stroke-width="3"/>
+  <path d="M252 195 A12 18 0 0 1 252 225" fill="none" stroke="#222" stroke-width="2.5"/>
+  <text x="258" y="205" font-size="10" fill="#333">C1 10uF</text>
+  <line x1="252" y1="210" x2="300" y2="210" stroke="#222" stroke-width="2"/>
+  <line x1="300" y1="210" x2="300" y2="250" stroke="#222" stroke-width="2"/>
+  <path d="M300 250 H310 L315 238 L325 262 L335 238 L345 262 L350 250 H360" fill="none" stroke="#222" stroke-width="2"/>
+  <text x="310" y="280" font-size="10" fill="#333">10k ohm</text>
+  <line x1="360" y1="250" x2="380" y2="250" stroke="#222" stroke-width="2"/>
+  <line x1="420" y1="210" x2="360" y2="180" stroke="#222" stroke-width="2"/>
+  <line x1="360" y1="180" x2="280" y2="180" stroke="#222" stroke-width="2"/>
+  <text x="330" y="172" font-size="10" fill="#c62828">+</text>
+  <line x1="320" y1="165" x2="320" y2="195" stroke="#222" stroke-width="3"/>
+  <path d="M308 165 A12 18 0 0 0 308 195" fill="none" stroke="#222" stroke-width="2.5"/>
+  <text x="250" y="175" font-size="10" fill="#333">C2 10uF</text>
+  <line x1="308" y1="180" x2="240" y2="180" stroke="#222" stroke-width="2"/>
+  <line x1="240" y1="180" x2="240" y2="250" stroke="#222" stroke-width="2"/>
+  <path d="M240 250 H230 L225 238 L215 262 L205 238 L195 262 L190 250 H160" fill="none" stroke="#222" stroke-width="2"/>
+  <text x="185" y="280" font-size="10" fill="#333">10k ohm</text>
+  <line x1="160" y1="250" x2="140" y2="250" stroke="#222" stroke-width="2"/>
+  <line x1="195" y1="320" x2="435" y2="320" stroke="#222" stroke-width="2"/>
+  <line x1="315" y1="320" x2="315" y2="335" stroke="#222" stroke-width="2"/>
+  <line x1="300" y1="335" x2="330" y2="335" stroke="#222" stroke-width="2.5"/>
+  <line x1="304" y1="341" x2="326" y2="341" stroke="#222" stroke-width="2"/>
+  <line x1="308" y1="347" x2="322" y2="347" stroke="#222" stroke-width="2"/>
+  <text x="338" y="342" font-size="12" fill="#333">GND</text>
+</svg>

@@ -1,0 +1,4 @@
+# mdformat 1.x reads this file (not [tool.mdformat] in pyproject.toml).
+wrap = 88
+number = true
+end_of_line = "lf"

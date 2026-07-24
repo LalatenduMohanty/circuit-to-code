@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 300" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <rect width="560" height="300" fill="#fafafa"/>
+  <text x="16" y="24" font-size="14" font-weight="700" fill="#1a1a1a">Kit tactile button on a breadboard</text>
+
+  <!-- Left half of breadboard -->
+  <rect x="40" y="50" width="160" height="140" rx="4" fill="#e8f5e9" stroke="#66bb6a" stroke-width="1.5"/>
+  <text x="120" y="70" text-anchor="middle" font-size="11" fill="#2e7d32">Left half</text>
+  <g fill="#a5d6a7">
+    <circle cx="70" cy="100" r="3"/><circle cx="90" cy="100" r="3"/><circle cx="110" cy="100" r="3"/><circle cx="130" cy="100" r="3"/><circle cx="150" cy="100" r="3"/>
+    <circle cx="70" cy="120" r="3"/><circle cx="90" cy="120" r="3"/><circle cx="110" cy="120" r="3"/><circle cx="130" cy="120" r="3"/><circle cx="150" cy="120" r="3"/>
+    <circle cx="70" cy="140" r="3"/><circle cx="90" cy="140" r="3"/><circle cx="110" cy="140" r="3"/><circle cx="130" cy="140" r="3"/><circle cx="150" cy="140" r="3"/>
+    <circle cx="70" cy="160" r="3"/><circle cx="90" cy="160" r="3"/><circle cx="110" cy="160" r="3"/><circle cx="130" cy="160" r="3"/><circle cx="150" cy="160" r="3"/>
+  </g>
+
+  <!-- Center ditch -->
+  <rect x="200" y="50" width="40" height="140" fill="#eeeeee" stroke="#bdbdbd" stroke-width="1"/>
+  <text x="220" y="125" text-anchor="middle" font-size="9" fill="#666">ditch</text>
+
+  <!-- Right half of breadboard -->
+  <rect x="240" y="50" width="160" height="140" rx="4" fill="#e3f2fd" stroke="#64b5f6" stroke-width="1.5"/>
+  <text x="320" y="70" text-anchor="middle" font-size="11" fill="#1565c0">Right half</text>
+  <g fill="#90caf9">
+    <circle cx="270" cy="100" r="3"/><circle cx="290" cy="100" r="3"/><circle cx="310" cy="100" r="3"/><circle cx="330" cy="100" r="3"/><circle cx="350" cy="100" r="3"/>
+    <circle cx="270" cy="120" r="3"/><circle cx="290" cy="120" r="3"/><circle cx="310" cy="120" r="3"/><circle cx="330" cy="120" r="3"/><circle cx="350" cy="120" r="3"/>
+    <circle cx="270" cy="140" r="3"/><circle cx="290" cy="140" r="3"/><circle cx="310" cy="140" r="3"/><circle cx="330" cy="140" r="3"/><circle cx="350" cy="140" r="3"/>
+    <circle cx="270" cy="160" r="3"/><circle cx="290" cy="160" r="3"/><circle cx="310" cy="160" r="3"/><circle cx="330" cy="160" r="3"/><circle cx="350" cy="160" r="3"/>
+  </g>
+
+  <!-- Button body straddling ditch -->
+  <rect x="155" y="105" width="130" height="50" rx="6" fill="#fff8e1" stroke="#f9a825" stroke-width="2"/>
+  <circle cx="220" cy="130" r="12" fill="#ffecb3" stroke="#f9a825" stroke-width="1.5"/>
+  <text x="220" y="134" text-anchor="middle" font-size="10" font-weight="600" fill="#795548">BTN</text>
+
+  <!-- Legs -->
+  <circle cx="170" cy="115" r="4" fill="#455a64"/>
+  <circle cx="170" cy="145" r="4" fill="#455a64"/>
+  <circle cx="270" cy="115" r="4" fill="#455a64"/>
+  <circle cx="270" cy="145" r="4" fill="#455a64"/>
+  <text x="155" y="100" font-size="11" font-weight="700" fill="#333">A</text>
+  <text x="155" y="168" font-size="11" font-weight="700" fill="#333">C</text>
+  <text x="278" y="100" font-size="11" font-weight="700" fill="#333">B</text>
+  <text x="278" y="168" font-size="11" font-weight="700" fill="#333">D</text>
+
+  <!-- Always-connected pairs (across the ditch) -->
+  <path d="M175 115 Q195 100 265 115" fill="none" stroke="#2e7d32" stroke-width="2" stroke-dasharray="4 3"/>
+  <path d="M175 145 Q195 160 265 145" fill="none" stroke="#2e7d32" stroke-width="2" stroke-dasharray="4 3"/>
+  <text x="420" y="70" font-size="12" font-weight="600" fill="#2e7d32">Always connected</text>
+  <text x="420" y="88" font-size="11" fill="#444">A to B, and C to D</text>
+  <text x="420" y="106" font-size="11" fill="#444">(across the ditch)</text>
+
+  <text x="420" y="140" font-size="12" font-weight="600" fill="#c62828">Connect when pressed</text>
+  <text x="420" y="158" font-size="11" fill="#444">Use opposite corners:</text>
+  <text x="420" y="176" font-size="11" fill="#444">A to D, or B to C</text>
+
+  <text x="16" y="220" font-size="12" fill="#333">1. Seat the button so it straddles the center ditch (two legs each side).</text>
+  <text x="16" y="242" font-size="12" fill="#333">2. Wire opposite corners into your circuit - those pins join only while you press.</text>
+  <text x="16" y="264" font-size="12" fill="#333">3. Pins across the ditch on the same row are already joined inside the button.</text>
+  <text x="16" y="286" font-size="12" fill="#333">   Do not use those as your switch - use opposite corners instead.</text>
+</svg>

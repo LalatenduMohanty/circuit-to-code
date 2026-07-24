@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <rect width="720" height="420" fill="#fafafa"/>
+  <text x="20" y="32" font-size="18" font-weight="700" fill="#1a1a1a">Electrical Symbols Used in This Guide</text>
+
+  <g transform="translate(20,55)">
+    <text x="0" y="0" font-size="13" font-weight="600" fill="#333">Power and Ground</text>
+    <line x1="10" y1="30" x2="70" y2="30" stroke="#222" stroke-width="2"/>
+    <text x="80" y="34" font-size="12" fill="#444">Wire</text>
+    <text x="10" y="70" font-size="14" font-weight="700" fill="#c62828">+5V</text>
+    <text x="55" y="70" font-size="12" fill="#444">Positive supply</text>
+    <line x1="10" y1="100" x2="40" y2="100" stroke="#222" stroke-width="2"/>
+    <line x1="10" y1="100" x2="10" y2="115" stroke="#222" stroke-width="2"/>
+    <line x1="0" y1="115" x2="20" y2="115" stroke="#222" stroke-width="2.5"/>
+    <line x1="3" y1="122" x2="17" y2="122" stroke="#222" stroke-width="2"/>
+    <line x1="6" y1="129" x2="14" y2="129" stroke="#222" stroke-width="2"/>
+    <text x="35" y="122" font-size="12" fill="#444">GND (Ground)</text>
+  </g>
+
+  <g transform="translate(250,55)">
+    <text x="0" y="0" font-size="13" font-weight="600" fill="#333">Resistor</text>
+    <path d="M10 40 H25 L30 28 L40 52 L50 28 L60 52 L70 28 L80 52 L85 40 H100" fill="none" stroke="#222" stroke-width="2"/>
+    <text x="40" y="70" font-size="11" fill="#444">220 ohm, 10k ohm</text>
+  </g>
+
+  <g transform="translate(400,55)">
+    <text x="0" y="0" font-size="13" font-weight="600" fill="#333">Potentiometer</text>
+    <path d="M10 40 H25 L30 28 L40 52 L50 28 L60 52 L70 28 L80 52 L85 40 H100" fill="none" stroke="#222" stroke-width="2"/>
+    <line x1="55" y1="20" x2="55" y2="38" stroke="#222" stroke-width="2"/>
+    <polygon points="55,38 50,28 60,28" fill="#222"/>
+    <text x="20" y="70" font-size="11" fill="#444">Variable resistor (knob)</text>
+  </g>
+
+  <g transform="translate(560,55)">
+    <text x="0" y="0" font-size="13" font-weight="600" fill="#333">LED</text>
+    <line x1="10" y1="40" x2="35" y2="40" stroke="#222" stroke-width="2"/>
+    <polygon points="35,25 35,55 60,40" fill="none" stroke="#222" stroke-width="2"/>
+    <line x1="60" y1="25" x2="60" y2="55" stroke="#222" stroke-width="2.5"/>
+    <line x1="60" y1="40" x2="90" y2="40" stroke="#222" stroke-width="2"/>
+    <line x1="68" y1="22" x2="80" y2="10" stroke="#222" stroke-width="1.5"/>
+    <line x1="74" y1="24" x2="86" y2="12" stroke="#222" stroke-width="1.5"/>
+    <polygon points="80,10 76,16 84,14" fill="#222"/>
+    <polygon points="86,12 82,18 90,16" fill="#222"/>
+    <text x="10" y="75" font-size="11" fill="#444">Triangle to bar</text>
+  </g>
+
+  <g transform="translate(20,210)">
+    <text x="0" y="0" font-size="13" font-weight="600" fill="#333">Tactile Push Button</text>
+    <line x1="10" y1="40" x2="40" y2="40" stroke="#222" stroke-width="2"/>
+    <circle cx="40" cy="40" r="3" fill="#222"/>
+    <line x1="40" y1="40" x2="70" y2="22" stroke="#222" stroke-width="2"/>
+    <circle cx="75" cy="40" r="3" fill="#222"/>
+    <line x1="75" y1="40" x2="105" y2="40" stroke="#222" stroke-width="2"/>
+    <text x="10" y="70" font-size="11" fill="#444">Open until pressed</text>
+  </g>
+
+  <g transform="translate(220,210)">
+    <text x="0" y="0" font-size="13" font-weight="600" fill="#333">Photoresistor (LDR)</text>
+    <path d="M10 40 H25 L30 28 L40 52 L50 28 L60 52 L70 28 L80 52 L85 40 H100" fill="none" stroke="#222" stroke-width="2"/>
+    <circle cx="55" cy="40" r="28" fill="none" stroke="#222" stroke-width="1.5"/>
+    <line x1="85" y1="15" x2="100" y2="5" stroke="#222" stroke-width="1.5"/>
+    <line x1="90" y1="22" x2="105" y2="12" stroke="#222" stroke-width="1.5"/>
+    <text x="10" y="85" font-size="11" fill="#444">Changes with light</text>
+  </g>
+
+  <g transform="translate(430,210)">
+    <text x="0" y="0" font-size="13" font-weight="600" fill="#333">Capacitor (polarized)</text>
+    <line x1="20" y1="40" x2="50" y2="40" stroke="#222" stroke-width="2"/>
+    <line x1="50" y1="22" x2="50" y2="58" stroke="#222" stroke-width="3"/>
+    <path d="M62 22 A12 18 0 0 1 62 58" fill="none" stroke="#222" stroke-width="2.5"/>
+    <line x1="62" y1="40" x2="95" y2="40" stroke="#222" stroke-width="2"/>
+    <text x="42" y="18" font-size="14" fill="#c62828">+</text>
+    <text x="10" y="80" font-size="11" fill="#444">+ = long leg</text>
+  </g>
+
+  <g transform="translate(20,320)">
+    <text x="0" y="0" font-size="13" font-weight="600" fill="#333">NPN Transistor (2N3904)</text>
+    <circle cx="70" cy="50" r="28" fill="none" stroke="#222" stroke-width="2"/>
+    <line x1="10" y1="50" x2="55" y2="50" stroke="#222" stroke-width="2"/>
+    <line x1="55" y1="35" x2="55" y2="65" stroke="#222" stroke-width="3"/>
+    <line x1="55" y1="40" x2="90" y2="25" stroke="#222" stroke-width="2"/>
+    <line x1="55" y1="60" x2="90" y2="75" stroke="#222" stroke-width="2"/>
+    <polygon points="82,70 90,75 80,78" fill="#222"/>
+    <text x="95" y="28" font-size="11" fill="#444">C (Collector)</text>
+    <text x="0" y="54" font-size="11" fill="#444">B</text>
+    <text x="95" y="80" font-size="11" fill="#444">E (Emitter to GND)</text>
+  </g>
+
+  <g transform="translate(320,330)">
+    <text x="0" y="0" font-size="12" fill="#555">Tip: LED current goes anode (long leg / triangle) to cathode (short leg / bar).</text>
+    <text x="0" y="22" font-size="12" fill="#555">Schematics show connections. Your breadboard is where you plug them in.</text>
+  </g>
+</svg>
