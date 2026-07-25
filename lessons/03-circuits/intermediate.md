@@ -85,8 +85,8 @@ but now the collector carries a heavier load (two bright branches in parallel). 
 micro:bit or Arduino pin is like that tiny base signal — it should not try to feed a
 hungry motor by itself.
 
-**Challenge:** Remove one LED branch so only one LED remains. Does the button still
-feel the same?
+**Challenge:** Remove one LED branch so only one LED remains. Does the button still feel
+the same?
 
 **You built it!** You learned: small signal in, stronger switched load out.
 
