@@ -24,8 +24,13 @@ hatch run build                # tests, then PDF into pdf/
 
 ```bash
 hatch run pdf
-hatch build -t custom pdf
+hatch run pdf --lesson scratch          # one module
+hatch run pdf --lesson circuits --lesson microbit
+hatch build -t custom pdf               # full book only
 ```
+
+`--lesson` accepts short id (`scratch`), folder (`01-scratch`), or number (`1`).
+The Hatch `pdf` script forwards args to the CLI (`circuit-to-code {args}`).
 
 ### Lint / format / type-check
 

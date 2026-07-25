@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import html
 import re
+from dataclasses import dataclass
 from pathlib import Path
 
 import markdown
@@ -25,6 +26,9 @@ LESSONS_DIR_NAME = "lessons"
 SKIP_FILE_NAMES = {
     "readme.md",
 }
+
+# Numbered module folders: 01-scratch, 02-circuits, …
+_MODULE_DIR_RE = re.compile(r"^(\d+)-(.+)$")
 
 
 def css_for_version(version: str) -> str:
@@ -220,20 +224,125 @@ hr {{
 """
 
 
-def find_markdown_files(repo_root: Path) -> list[Path]:
-    """Return lesson markdown under lessons/, sorted by module path order."""
+@dataclass(frozen=True)
+class LessonModule:
+    """One course module under lessons/NN-slug/."""
+
+    folder: str
+    short_id: str
+    order: int
+    path: Path
+
+
+def list_lesson_modules(repo_root: Path) -> list[LessonModule]:
+    """Discover numbered lesson modules that contain printable markdown."""
     lessons_root = repo_root / LESSONS_DIR_NAME
     if not lessons_root.is_dir():
         return []
 
-    files: list[Path] = []
-    for path in lessons_root.rglob("*.md"):
-        if path.name.lower() in SKIP_FILE_NAMES:
+    modules: list[LessonModule] = []
+    for entry in lessons_root.iterdir():
+        if not entry.is_dir():
             continue
-        files.append(path)
+        match = _MODULE_DIR_RE.match(entry.name)
+        if not match:
+            continue
+        has_lesson_md = any(
+            path.is_file() and path.name.lower() not in SKIP_FILE_NAMES
+            for path in entry.rglob("*.md")
+        )
+        if not has_lesson_md:
+            continue
+        modules.append(
+            LessonModule(
+                folder=entry.name,
+                short_id=match.group(2).lower(),
+                order=int(match.group(1)),
+                path=entry,
+            )
+        )
+    return sorted(modules, key=lambda module: (module.order, module.folder.lower()))
 
-    # Zero-padded module folders (01-scratch, 02-circuits, …) sort naturally.
-    return sorted(files, key=lambda path: path.relative_to(repo_root).as_posix().lower())
+
+def resolve_lesson_selectors(
+    repo_root: Path,
+    selectors: list[str],
+) -> list[LessonModule]:
+    """Resolve user selectors to modules in course order.
+
+    Accepts short id (scratch), folder name (01-scratch), or order number (1).
+    """
+    modules = list_lesson_modules(repo_root)
+    if not modules:
+        raise ValueError(f"No lesson modules found under {repo_root / LESSONS_DIR_NAME}")
+
+    by_short = {module.short_id: module for module in modules}
+    by_folder = {module.folder.lower(): module for module in modules}
+    by_order = {str(module.order): module for module in modules}
+
+    selected: list[LessonModule] = []
+    seen: set[str] = set()
+    unknown: list[str] = []
+
+    for raw in selectors:
+        key = raw.strip().lower()
+        if not key:
+            continue
+        module = by_short.get(key) or by_folder.get(key) or by_order.get(key)
+        if module is None:
+            unknown.append(raw)
+            continue
+        if module.folder in seen:
+            continue
+        seen.add(module.folder)
+        selected.append(module)
+
+    if unknown:
+        valid = ", ".join(
+            f"{module.short_id} ({module.folder})" for module in modules
+        )
+        raise ValueError(
+            f"Unknown lesson selector(s): {', '.join(unknown)}. Valid: {valid}"
+        )
+    if not selected:
+        raise ValueError("No lessons selected.")
+
+    return sorted(selected, key=lambda module: (module.order, module.folder.lower()))
+
+
+def find_markdown_files(
+    repo_root: Path,
+    lessons: list[str] | None = None,
+) -> list[Path]:
+    """Return lesson markdown under lessons/, sorted by module path order.
+
+    When ``lessons`` is set, only markdown from the matching modules is included.
+    """
+    if lessons:
+        modules = resolve_lesson_selectors(repo_root, lessons)
+    else:
+        modules = list_lesson_modules(repo_root)
+
+    files: list[Path] = []
+    for module in modules:
+        module_files = [
+            path
+            for path in module.path.rglob("*.md")
+            if path.is_file() and path.name.lower() not in SKIP_FILE_NAMES
+        ]
+        module_files.sort(
+            key=lambda path: path.relative_to(repo_root).as_posix().lower()
+        )
+        files.extend(module_files)
+    return files
+
+
+def markdown_title(md_file: Path) -> str:
+    """Return the first ATX H1 from a markdown file, or a fallback label."""
+    for line in md_file.read_text(encoding="utf-8").splitlines():
+        if line.startswith("# "):
+            return line[2:].strip()
+    return md_file.stem.replace("-", " ").replace("_", " ").title()
 
 
 def rewrite_image_sources(html_fragment: str, md_file: Path) -> str:
@@ -331,6 +440,7 @@ def build_html_document(
     repo_root: Path,
     md_files: list[Path],
     version: str | None = None,
+    lesson_ids: list[str] | None = None,
 ) -> str:
     version = version or __version__
     sections: list[str] = []
@@ -351,10 +461,21 @@ def build_html_document(
 
     joined = "\n".join(sections)
     toc = build_toc_html(toc_entries)
+    tagline = PROJECT_TAGLINE
+    title = f"Circuit to Code v{version}"
+    if lesson_ids:
+        titles = [markdown_title(path) for path in md_files]
+        if len(titles) == 1:
+            tagline = titles[0]
+            title = f"{titles[0]} — Circuit to Code v{version}"
+        else:
+            tagline = "Selected lessons: " + "; ".join(titles)
+            title = f"Circuit to Code ({', '.join(lesson_ids)}) v{version}"
+
     banner = (
         f'<header class="doc-banner">'
         f"<h1>Circuit to Code</h1>"
-        f"<p>{html.escape(PROJECT_TAGLINE)}</p>"
+        f"<p>{html.escape(tagline)}</p>"
         f"<p>Version {html.escape(version)}</p>"
         f"<p>{html.escape(COPYRIGHT_LINE)}</p>"
         f'<p>Source and updates: <a href="{html.escape(REPO_URL)}">'
@@ -365,7 +486,7 @@ def build_html_document(
 <html lang="en">
 <head>
   <meta charset="utf-8"/>
-  <title>Circuit to Code v{html.escape(version)}</title>
+  <title>{html.escape(title)}</title>
   <style>{css_for_version(version)}</style>
 </head>
 <body>
@@ -377,8 +498,15 @@ def build_html_document(
 """
 
 
-def default_output_path(repo_root: Path, version: str | None = None) -> Path:
+def default_output_path(
+    repo_root: Path,
+    version: str | None = None,
+    lesson_ids: list[str] | None = None,
+) -> Path:
     version = version or __version__
+    if lesson_ids:
+        slug = "-".join(lesson_ids)
+        return repo_root / "pdf" / f"circuit-to-code-{slug}-v{version}.pdf"
     return repo_root / "pdf" / f"circuit-to-code-v{version}.pdf"
 
 
@@ -386,20 +514,32 @@ def generate_pdf(
     repo_root: Path,
     output: Path | None = None,
     version: str | None = None,
+    lessons: list[str] | None = None,
 ) -> Path:
     version = version or __version__
-    output = output or default_output_path(repo_root, version)
+    lesson_ids: list[str] | None = None
+    if lessons:
+        lesson_ids = [module.short_id for module in resolve_lesson_selectors(repo_root, lessons)]
 
-    md_files = find_markdown_files(repo_root)
+    output = output or default_output_path(repo_root, version, lesson_ids=lesson_ids)
+
+    md_files = find_markdown_files(repo_root, lessons=lessons)
     if not md_files:
         raise FileNotFoundError(f"No Markdown files found under {repo_root}")
 
     print(f"Project version: {version}")
+    if lesson_ids:
+        print(f"Lessons: {', '.join(lesson_ids)}")
     print(f"Found {len(md_files)} Markdown file(s):")
     for path in md_files:
         print(f"  - {path.relative_to(repo_root)}")
 
-    document = build_html_document(repo_root, md_files, version=version)
+    document = build_html_document(
+        repo_root,
+        md_files,
+        version=version,
+        lesson_ids=lesson_ids,
+    )
     output.parent.mkdir(parents=True, exist_ok=True)
     HTML(string=document, base_url=repo_root.as_uri() + "/").write_pdf(output)
     return output.resolve()

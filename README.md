@@ -38,6 +38,21 @@ This writes a versioned file under `pdf/`, for example:
 pdf/circuit-to-code-v0.2.0.pdf
 ```
 
+### Specific lessons
+
+Generate one or more modules instead of the full book:
+
+```bash
+hatch run pdf --lesson scratch
+hatch run pdf --lesson circuits
+hatch run pdf --lesson microbit
+hatch run pdf --lesson scratch --lesson circuits
+```
+
+Selectors accept the short id (`scratch`), folder name (`01-scratch`), or order
+number (`1`). Filtered builds write names like
+`pdf/circuit-to-code-scratch-v0.2.0.pdf`.
+
 ### Other ways to build
 
 ```bash
@@ -45,7 +60,7 @@ pdf/circuit-to-code-v0.2.0.pdf
 hatch run circuit-to-code
 
 # Custom output path
-hatch run circuit-to-code -- -o /tmp/circuits.pdf
+hatch run pdf -o /tmp/circuits.pdf
 
 # Hatch custom build target (also writes under pdf/)
 hatch build -t custom pdf
@@ -57,7 +72,8 @@ hatch run build
 ### What goes into the PDF
 
 Markdown lessons under `lessons/` (in numbered module order) plus their embedded
-diagrams. Developer docs under `docs/` and this README are not included.
+diagrams. Use `--lesson` to include only selected modules. Developer docs under
+`docs/` and this README are not included.
 
 ## More developer commands
 

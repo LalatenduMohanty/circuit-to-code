@@ -43,6 +43,12 @@ def test_find_markdown_files_includes_lessons_in_course_order(repo_root: Path) -
     assert rels == LESSON_FILES
 
 
+def test_find_markdown_files_filters_to_one_module(repo_root: Path) -> None:
+    files = find_markdown_files(repo_root, lessons=["microbit"])
+    rels = [path.relative_to(repo_root).as_posix() for path in files]
+    assert rels == ["lessons/03-microbit/microbit-v2.md"]
+
+
 def test_find_markdown_files_skips_meta_docs(repo_root: Path) -> None:
     files = find_markdown_files(repo_root)
     rels = {path.relative_to(repo_root).as_posix() for path in files}

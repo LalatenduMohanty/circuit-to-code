@@ -57,7 +57,7 @@ build = [
   "pytest -q tests",
   "hatch build -t custom pdf",
 ]
-pdf = "circuit-to-code"
+pdf = "circuit-to-code {args}"
 
 [tool.hatch.envs.test]
 template = "default"

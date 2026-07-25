@@ -20,12 +20,50 @@ def test_parse_args_output_option(tmp_path: Path) -> None:
     assert args.repo_root == tmp_path
 
 
+def test_parse_args_lesson_repeatable() -> None:
+    args = parse_args(["--lesson", "scratch", "--lesson", "circuits"])
+    assert args.lesson == ["scratch", "circuits"]
+
+
 def test_main_generates_pdf(repo_root: Path, tmp_path: Path) -> None:
     out = tmp_path / "guide.pdf"
     code = main(["--repo-root", str(repo_root), "-o", str(out)])
     assert code == 0
     assert out.is_file()
     assert out.read_bytes()[:4] == b"%PDF"
+
+
+def test_main_generates_lesson_pdf(repo_root: Path, tmp_path: Path) -> None:
+    out = tmp_path / "scratch.pdf"
+    code = main(
+        [
+            "--repo-root",
+            str(repo_root),
+            "--lesson",
+            "scratch",
+            "-o",
+            str(out),
+        ]
+    )
+    assert code == 0
+    assert out.is_file()
+    assert out.read_bytes()[:4] == b"%PDF"
+
+
+def test_main_unknown_lesson_exits_nonzero(repo_root: Path, tmp_path: Path) -> None:
+    out = tmp_path / "out.pdf"
+    code = main(
+        [
+            "--repo-root",
+            str(repo_root),
+            "--lesson",
+            "not-a-lesson",
+            "-o",
+            str(out),
+        ]
+    )
+    assert code == 2
+    assert not out.exists()
 
 
 def test_main_version_flag_exits() -> None:
