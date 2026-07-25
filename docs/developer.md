@@ -16,21 +16,33 @@ Project dependencies are declared in `pyproject.toml`.
 ### Tests
 
 ```bash
-hatch run test                 # pytest
-hatch run build                # tests, then PDF into pdf/
+hatch run test                 # pytest (PDF tests write under temp dirs)
+hatch run pdf -o /tmp/check.pdf   # verify full PDF build without touching pdf/
+hatch run build                # tests, then overwrite pdf/circuit-to-code-vX.Y.Z.pdf
 ```
+
+CI runs unit tests and a temp-path PDF build on every change. Prefer
+`hatch run pdf -o …` for day-to-day checks.
 
 ### PDF only
 
 ```bash
-hatch run pdf
+hatch run pdf -o /tmp/check.pdf         # verify without updating tracked release PDF
+hatch run pdf                           # writes pdf/circuit-to-code-vX.Y.Z.pdf
 hatch run pdf --lesson scratch          # one module
 hatch run pdf --lesson circuits --lesson microbit
-hatch build -t custom pdf               # full book only
+hatch build -t custom pdf               # full book into pdf/
 ```
 
 `--lesson` accepts short id (`scratch`), folder (`01-scratch`), or number (`1`). The
 Hatch `pdf` script forwards args to the CLI (`circuit-to-code {args}`).
+
+### Committing PDFs
+
+Tracked files under `pdf/` are release artifacts. Commit a regenerated PDF **only**
+when bumping `__version__` in `version.py` (and update the README download link).
+Otherwise leave `pdf/` out of the commit — CI rejects PRs that change `pdf/*.pdf`
+without a `version.py` change.
 
 ### Lint / format / type-check
 
@@ -69,7 +81,7 @@ mdformat 1.x reads **`.mdformat.toml`** (not `[tool.mdformat]` in `pyproject.tom
 | `src/circuit_to_code/` | PDF generation package                          |
 | `tests/`               | pytest suite (including SVG validation)         |
 | `docs/`                | Developer docs (excluded from the lesson PDF)   |
-| `pdf/`                 | Generated PDF output (versioned files tracked)  |
+| `pdf/`                 | Release PDF(s); commit only with version bumps  |
 
 ## Course modules
 
@@ -103,6 +115,8 @@ GitHub Actions (`.github/workflows/ci.yml`) runs:
 
 1. `hatch run lint:check`
 2. `hatch run test`
+3. `hatch run pdf -o $RUNNER_TEMP/…` (build check; output is not committed)
+4. On pull requests: fail if `pdf/*.pdf` changed without a `version.py` bump
 
 ## SVG diagrams
 

@@ -29,7 +29,7 @@ class PdfBuilder(BuilderInterface):  # type: ignore[type-arg]
 
         from circuit_to_code.pdf import generate_pdf
 
-        # `directory` is set to pdf/ via: hatch build -t custom -d pdf
+        # LOCATION sets the output directory, e.g. `hatch build -t custom pdf`
         output = Path(directory) / f"circuit-to-code-v{project_version}.pdf"
         self.app.display_info(f"Generating PDF (version {project_version}) -> {output}")
         pdf_path = generate_pdf(root, output=output, version=project_version)

@@ -24,10 +24,12 @@ jobs:
         run: hatch run lint:check
 
   test:
-    name: Tests
+    name: Tests and PDF build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -46,3 +48,26 @@ jobs:
 
       - name: Run unit tests
         run: hatch run test
+
+      - name: Build PDF (temp output; do not commit)
+        run: hatch run pdf -o "${RUNNER_TEMP}/circuit-to-code-ci.pdf"
+
+      - name: Enforce PDF commit policy
+        if: github.event_name == 'pull_request'
+        run: |
+          set -euo pipefail
+          BASE="${{ github.event.pull_request.base.sha }}"
+          HEAD="${{ github.sha }}"
+          mapfile -t CHANGED < <(git diff --name-only "${BASE}...${HEAD}")
+          pdf_changed=0
+          version_changed=0
+          for path in "${CHANGED[@]}"; do
+            case "${path}" in
+              pdf/*.pdf) pdf_changed=1 ;;
+              version.py) version_changed=1 ;;
+            esac
+          done
+          if [[ "${pdf_changed}" -eq 1 && "${version_changed}" -eq 0 ]]; then
+            echo "::error::pdf/*.pdf changed without version.py. Commit release PDFs only when bumping the version."
+            exit 1
+          fi
