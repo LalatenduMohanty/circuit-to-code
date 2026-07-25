@@ -39,10 +39,10 @@ Hatch `pdf` script forwards args to the CLI (`circuit-to-code {args}`).
 
 ### Committing PDFs
 
-Tracked files under `pdf/` are release artifacts. Commit a regenerated PDF **only**
-when bumping `__version__` in `version.py` (and update the README download link).
-Otherwise leave `pdf/` out of the commit — CI rejects PRs that change `pdf/*.pdf`
-without a `version.py` change.
+Tracked files under `pdf/` are release artifacts. Commit a regenerated PDF **only** when
+bumping `__version__` in `version.py` (and update the README download link). Otherwise
+leave `pdf/` out of the commit — CI rejects PRs that change `pdf/*.pdf` without a
+`version.py` change.
 
 ### Lint / format / type-check
 

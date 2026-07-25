@@ -34,7 +34,8 @@ Ask yourself: "Would a senior engineer say this is overcomplicated?" If yes, sim
 
 When editing existing code:
 
-- Don't "improve" adjacent code, comments, or formatting.
+- Don't "improve" adjacent code, comments, or formatting beyond what project
+  formatters require for files you touched.
 - Don't refactor things that aren't broken.
 - Match existing style, even if you'd do it differently.
 - If you notice unrelated dead code, mention it — don't delete it.
@@ -78,13 +79,28 @@ This repo is **Circuit to Code**: markdown lessons under `lessons/` plus a PDF b
 | `pdf/` | Generated PDF output |
 | `docs/developer.md` | Hatch, lint, test, and PDF commands |
 
-When verifying Python or markdown changes, always run tests **and** a PDF build:
+### Mandatory verification before finishing
+
+CI runs `hatch run lint:check` (Ruff, mypy, **mdformat**). Untouched-looking
+markdown often fails CI when line wraps or tables do not match mdformat.
+
+Before considering any task done that edits Python, Markdown (`README.md`,
+`lessons/`, `docs/`, `AGENTS.md`), or Hatch/build scripts:
+
+1. Auto-fix if you changed Markdown or Python formatting might drift:
+   `hatch run lint:fmt`
+2. Always confirm the CI lint gate:
+   `hatch run lint:check`
+3. For lesson or PDF-related changes, also run:
 
 ```bash
 hatch run test
-hatch run lint:check
 hatch run pdf -o /tmp/circuit-to-code-check.pdf
 ```
+
+Do not stop after "it looks fine" — `mdformat --check` must pass. If
+`lint:check` fails on a file you edited, run `lint:fmt` (or fix the reported
+issue) and re-run `lint:check` until clean.
 
 Write verification PDFs to a temp path (`-o`). Do **not** stage or commit files under `pdf/` unless the change also bumps `__version__` in `version.py` (release PDF refresh). After `hatch run build` or `hatch run pdf` without `-o`, discard any dirty `pdf/*.pdf` unless this is a version bump.
 
