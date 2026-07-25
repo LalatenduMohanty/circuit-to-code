@@ -5,7 +5,9 @@ programming and real-world embedded projects (Scratch / LEGO Spike Prime friendl
 schematics and a printable PDF.
 
 **Start here:** course path and full contents are in
-[`lessons/README.md`](lessons/README.md) (Scratch → Circuits → micro:bit).
+[`lessons/README.md`](lessons/README.md) (Scratch → Circuits (Beginner) → micro:bit →
+Circuits (Intermediate) → CircuitPython and/or Arduino; optional SPIKE Prime after
+Scratch).
 
 **Download the printable PDF:**
 [`pdf/circuit-to-code-v0.2.0.pdf`](pdf/circuit-to-code-v0.2.0.pdf)
@@ -44,13 +46,17 @@ Generate one or more modules instead of the full book:
 
 ```bash
 hatch run pdf --lesson scratch
+hatch run pdf --lesson spike-prime
 hatch run pdf --lesson circuits
 hatch run pdf --lesson microbit
+hatch run pdf --lesson circuitpython
+hatch run pdf --lesson arduino
 hatch run pdf --lesson scratch --lesson circuits
 ```
 
-Selectors accept the short id (`scratch`), folder name (`01-scratch`), or order
-number (`1`). Filtered builds write names like
+Selectors accept the short id (`scratch`, `spike-prime`, `circuits`, `circuitpython`,
+`arduino`), folder name (`01-scratch`), or order number (`1`). The `circuits` module
+includes both Beginner and Intermediate sections. Filtered builds write names like
 `pdf/circuit-to-code-scratch-v0.2.0.pdf`.
 
 ### Other ways to build
@@ -72,8 +78,8 @@ hatch run build
 ### What goes into the PDF
 
 Markdown lessons under `lessons/` (in numbered module order) plus their embedded
-diagrams. Use `--lesson` to include only selected modules. Developer docs under
-`docs/` and this README are not included.
+diagrams. Use `--lesson` to include only selected modules. Developer docs under `docs/`
+and this README are not included.
 
 ## More developer commands
 

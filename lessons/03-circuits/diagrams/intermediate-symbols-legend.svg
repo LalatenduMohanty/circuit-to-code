@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <rect width="720" height="360" fill="#fafafa"/>
+  <text x="20" y="32" font-size="18" font-weight="700" fill="#1a1a1a">New Symbols in Intermediate Circuits</text>
+  <text x="20" y="54" font-size="12" fill="#555">You already know resistors, LEDs, buttons, capacitors, and NPN transistors from Beginner Circuits.</text>
+
+  <g transform="translate(20,80)">
+    <text x="0" y="0" font-size="13" font-weight="600" fill="#333">Diode (one-way valve)</text>
+    <line x1="10" y1="40" x2="45" y2="40" stroke="#222" stroke-width="2"/>
+    <polygon points="45,25 45,55 75,40" fill="none" stroke="#222" stroke-width="2"/>
+    <line x1="75" y1="25" x2="75" y2="55" stroke="#222" stroke-width="2.5"/>
+    <line x1="75" y1="40" x2="110" y2="40" stroke="#222" stroke-width="2"/>
+    <text x="10" y="75" font-size="11" fill="#444">Current flows triangle to bar</text>
+    <text x="10" y="92" font-size="11" fill="#444">Bar side = cathode (stripe on part)</text>
+  </g>
+
+  <g transform="translate(280,80)">
+    <text x="0" y="0" font-size="13" font-weight="600" fill="#333">DC motor</text>
+    <line x1="20" y1="40" x2="50" y2="40" stroke="#222" stroke-width="2"/>
+    <circle cx="80" cy="40" r="28" fill="none" stroke="#222" stroke-width="2"/>
+    <text x="72" y="46" font-size="16" font-weight="700" fill="#222">M</text>
+    <line x1="110" y1="40" x2="140" y2="40" stroke="#222" stroke-width="2"/>
+    <text x="10" y="85" font-size="11" fill="#444">Spins when current flows</text>
+  </g>
+
+  <g transform="translate(500,80)">
+    <text x="0" y="0" font-size="13" font-weight="600" fill="#333">Flyback diode (on a motor)</text>
+    <line x1="20" y1="55" x2="50" y2="55" stroke="#222" stroke-width="2"/>
+    <circle cx="80" cy="55" r="22" fill="none" stroke="#222" stroke-width="2"/>
+    <text x="73" y="60" font-size="14" font-weight="700" fill="#222">M</text>
+    <line x1="102" y1="55" x2="140" y2="55" stroke="#222" stroke-width="2"/>
+    <line x1="50" y1="55" x2="50" y2="20" stroke="#222" stroke-width="2"/>
+    <line x1="140" y1="55" x2="140" y2="20" stroke="#222" stroke-width="2"/>
+    <line x1="50" y1="20" x2="70" y2="20" stroke="#222" stroke-width="2"/>
+    <polygon points="95,10 95,30 70,20" fill="none" stroke="#1565c0" stroke-width="2"/>
+    <line x1="95" y1="10" x2="95" y2="30" stroke="#1565c0" stroke-width="2.5"/>
+    <line x1="95" y1="20" x2="140" y2="20" stroke="#222" stroke-width="2"/>
+    <text x="10" y="95" font-size="11" fill="#444">Diode across motor (reverse)</text>
+  </g>
+
+  <g transform="translate(20,220)">
+    <text x="0" y="0" font-size="13" font-weight="600" fill="#333">Voltage divider</text>
+    <text x="10" y="28" font-size="13" font-weight="700" fill="#c62828">+5V</text>
+    <line x1="25" y1="35" x2="25" y2="50" stroke="#222" stroke-width="2"/>
+    <path d="M25 50 L25 58 L13 63 L37 73 L13 83 L25 88 L25 96" fill="none" stroke="#222" stroke-width="2"/>
+    <text x="42" y="75" font-size="11" fill="#333">R1</text>
+    <circle cx="25" cy="105" r="4" fill="#1565c0"/>
+    <text x="42" y="109" font-size="11" fill="#1565c0">Vout (middle)</text>
+    <line x1="25" y1="109" x2="25" y2="120" stroke="#222" stroke-width="2"/>
+    <path d="M25 120 L25 128 L13 133 L37 143 L13 153 L25 158 L25 166" fill="none" stroke="#222" stroke-width="2"/>
+    <text x="42" y="145" font-size="11" fill="#333">R2</text>
+    <line x1="25" y1="166" x2="25" y2="180" stroke="#222" stroke-width="2"/>
+    <line x1="12" y1="180" x2="38" y2="180" stroke="#222" stroke-width="2.5"/>
+    <line x1="15" y1="186" x2="35" y2="186" stroke="#222" stroke-width="2"/>
+    <text x="45" y="185" font-size="11" fill="#333">GND</text>
+  </g>
+
+  <g transform="translate(280,220)">
+    <text x="0" y="0" font-size="13" font-weight="600" fill="#333">Power habit reminder</text>
+    <text x="0" y="28" font-size="12" fill="#444">Motors need more current than an LED.</text>
+    <text x="0" y="48" font-size="12" fill="#444">A tiny board pin should only send a signal</text>
+    <text x="0" y="68" font-size="12" fill="#444">to a transistor - not feed the motor alone.</text>
+    <text x="0" y="96" font-size="12" fill="#444">Always share GND when mixing power sources.</text>
+  </g>
+</svg>

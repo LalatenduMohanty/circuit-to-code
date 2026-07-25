@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 240" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <rect width="620" height="240" fill="#fafafa"/>
+  <text x="16" y="24" font-size="14" font-weight="700" fill="#1a1a1a">Circuit 2 - Diode Direction Test</text>
+
+  <text x="40" y="55" font-size="13" font-weight="700" fill="#1565c0">Build A - diode forward (LED on)</text>
+  <text x="40" y="78" font-size="13" font-weight="700" fill="#c62828">+5V</text>
+  <line x1="55" y1="85" x2="55" y2="100" stroke="#222" stroke-width="2"/>
+  <path d="M55 100 L55 108 L43 113 L67 123 L43 133 L55 138 L55 146" fill="none" stroke="#222" stroke-width="2"/>
+  <text x="72" y="125" font-size="11" fill="#333">220 ohm</text>
+  <line x1="55" y1="146" x2="55" y2="160" stroke="#222" stroke-width="2"/>
+  <polygon points="40,160 40,190 70,175" fill="none" stroke="#222" stroke-width="2"/>
+  <line x1="70" y1="160" x2="70" y2="190" stroke="#222" stroke-width="2.5"/>
+  <text x="78" y="172" font-size="11" fill="#333">Diode</text>
+  <line x1="55" y1="190" x2="55" y2="200" stroke="#222" stroke-width="2"/>
+  <polygon points="40,200 70,200 55,220" fill="none" stroke="#222" stroke-width="2"/>
+  <line x1="40" y1="220" x2="70" y2="220" stroke="#222" stroke-width="2.5"/>
+  <text x="78" y="215" font-size="11" fill="#333">LED</text>
+  <line x1="55" y1="220" x2="55" y2="235" stroke="#222" stroke-width="2"/>
+  <line x1="40" y1="235" x2="70" y2="235" stroke="#222" stroke-width="2.5"/>
+  <text x="78" y="238" font-size="11" fill="#333">GND</text>
+
+  <text x="320" y="55" font-size="13" font-weight="700" fill="#1565c0">Build B - diode reversed (LED off)</text>
+  <text x="320" y="78" font-size="13" font-weight="700" fill="#c62828">+5V</text>
+  <line x1="335" y1="85" x2="335" y2="100" stroke="#222" stroke-width="2"/>
+  <path d="M335 100 L335 108 L323 113 L347 123 L323 133 L335 138 L335 146" fill="none" stroke="#222" stroke-width="2"/>
+  <text x="352" y="125" font-size="11" fill="#333">220 ohm</text>
+  <line x1="335" y1="146" x2="335" y2="160" stroke="#222" stroke-width="2"/>
+  <line x1="320" y1="160" x2="320" y2="190" stroke="#222" stroke-width="2.5"/>
+  <polygon points="350,160 350,190 320,175" fill="none" stroke="#222" stroke-width="2"/>
+  <text x="358" y="172" font-size="11" fill="#333">Diode flipped</text>
+  <line x1="335" y1="190" x2="335" y2="200" stroke="#222" stroke-width="2"/>
+  <polygon points="320,200 350,200 335,220" fill="none" stroke="#222" stroke-width="2"/>
+  <line x1="320" y1="220" x2="350" y2="220" stroke="#222" stroke-width="2.5"/>
+  <text x="358" y="215" font-size="11" fill="#333">LED</text>
+  <line x1="335" y1="220" x2="335" y2="235" stroke="#222" stroke-width="2"/>
+  <line x1="320" y1="235" x2="350" y2="235" stroke="#222" stroke-width="2.5"/>
+  <text x="358" y="238" font-size="11" fill="#333">GND</text>
+</svg>

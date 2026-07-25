@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 300" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <rect width="520" height="300" fill="#fafafa"/>
+  <text x="16" y="24" font-size="14" font-weight="700" fill="#1a1a1a">Circuit 3 - Voltage Divider</text>
+  <text x="40" y="55" font-size="14" font-weight="700" fill="#c62828">+5V</text>
+  <line x1="55" y1="62" x2="55" y2="80" stroke="#222" stroke-width="2"/>
+  <path d="M55 80 L55 90 L43 95 L67 105 L43 115 L55 120 L55 130" fill="none" stroke="#222" stroke-width="2"/>
+  <text x="78" y="108" font-size="12" fill="#333">10k ohm (R1)</text>
+  <line x1="55" y1="130" x2="55" y2="150" stroke="#222" stroke-width="2"/>
+  <circle cx="55" cy="150" r="5" fill="#1565c0"/>
+  <line x1="55" y1="150" x2="160" y2="150" stroke="#1565c0" stroke-width="2"/>
+  <text x="170" y="145" font-size="12" font-weight="600" fill="#1565c0">Vout (measure here)</text>
+  <text x="170" y="162" font-size="11" fill="#555">to LED path or meter probe</text>
+  <line x1="55" y1="150" x2="55" y2="170" stroke="#222" stroke-width="2"/>
+  <path d="M55 170 L55 180 L43 185 L67 195 L43 205 L55 210 L55 220" fill="none" stroke="#222" stroke-width="2"/>
+  <text x="78" y="198" font-size="12" fill="#333">10k ohm (R2)</text>
+  <line x1="55" y1="220" x2="55" y2="245" stroke="#222" stroke-width="2"/>
+  <line x1="40" y1="245" x2="70" y2="245" stroke="#222" stroke-width="2.5"/>
+  <line x1="44" y1="251" x2="66" y2="251" stroke="#222" stroke-width="2"/>
+  <line x1="48" y1="257" x2="62" y2="257" stroke="#222" stroke-width="2"/>
+  <text x="78" y="252" font-size="12" fill="#333">GND</text>
+
+  <g transform="translate(300,80)">
+    <text x="0" y="0" font-size="12" font-weight="600" fill="#333">Equal resistors tip</text>
+    <text x="0" y="24" font-size="12" fill="#444">If R1 = R2, Vout is about</text>
+    <text x="0" y="44" font-size="12" fill="#444">half of +5V (around 2.5V).</text>
+    <text x="0" y="76" font-size="12" fill="#444">Boards read this middle</text>
+    <text x="0" y="96" font-size="12" fill="#444">point as a sensor signal.</text>
+  </g>
+</svg>

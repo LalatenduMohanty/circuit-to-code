@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 320" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <rect width="560" height="320" fill="#fafafa"/>
+  <text x="16" y="24" font-size="14" font-weight="700" fill="#1a1a1a">Circuit 5 - Analog Throttle (PWM Intuition)</text>
+  <line x1="40" y1="50" x2="480" y2="50" stroke="#c62828" stroke-width="2"/>
+  <text x="490" y="54" font-size="13" font-weight="700" fill="#c62828">+5V</text>
+
+  <line x1="120" y1="50" x2="120" y2="80" stroke="#222" stroke-width="2"/>
+  <path d="M90 100 H105 L110 88 L120 112 L130 88 L140 112 L145 100 H160" fill="none" stroke="#222" stroke-width="2"/>
+  <line x1="125" y1="70" x2="125" y2="88" stroke="#222" stroke-width="2"/>
+  <polygon points="125,88 120,78 130,78" fill="#222"/>
+  <line x1="90" y1="100" x2="90" y2="130" stroke="#222" stroke-width="2"/>
+  <line x1="160" y1="100" x2="160" y2="50" stroke="#222" stroke-width="2"/>
+  <line x1="90" y1="130" x2="75" y2="130" stroke="#222" stroke-width="2"/>
+  <line x1="60" y1="130" x2="90" y2="130" stroke="#222" stroke-width="2.5"/>
+  <line x1="64" y1="136" x2="86" y2="136" stroke="#222" stroke-width="2"/>
+  <text x="70" y="155" font-size="10" fill="#333">GND</text>
+  <text x="95" y="175" font-size="11" fill="#333">10k pot (throttle)</text>
+  <line x1="125" y1="100" x2="125" y2="200" stroke="#222" stroke-width="2"/>
+  <path d="M125 200 H140 L145 188 L155 212 L165 188 L175 212 L180 200 H195" fill="none" stroke="#222" stroke-width="2"/>
+  <text x="140" y="230" font-size="10" fill="#333">1k ohm</text>
+  <line x1="195" y1="200" x2="195" y2="245" stroke="#222" stroke-width="2"/>
+
+  <line x1="360" y1="50" x2="360" y2="90" stroke="#222" stroke-width="2"/>
+  <path d="M360 90 L360 98 L348 103 L372 113 L348 123 L360 128 L360 136" fill="none" stroke="#222" stroke-width="2"/>
+  <text x="378" y="115" font-size="10" fill="#333">220 ohm</text>
+  <line x1="360" y1="136" x2="360" y2="155" stroke="#222" stroke-width="2"/>
+  <polygon points="345,155 375,155 360,175" fill="none" stroke="#222" stroke-width="2"/>
+  <line x1="345" y1="175" x2="375" y2="175" stroke="#222" stroke-width="2.5"/>
+  <text x="382" y="170" font-size="10" fill="#333">LED</text>
+  <line x1="360" y1="175" x2="360" y2="245" stroke="#222" stroke-width="2"/>
+
+  <circle cx="280" cy="245" r="28" fill="#fafafa" stroke="#222" stroke-width="2"/>
+  <line x1="195" y1="245" x2="252" y2="245" stroke="#222" stroke-width="2"/>
+  <line x1="252" y1="230" x2="252" y2="260" stroke="#222" stroke-width="3"/>
+  <line x1="252" y1="235" x2="280" y2="220" stroke="#222" stroke-width="2"/>
+  <line x1="252" y1="255" x2="280" y2="270" stroke="#222" stroke-width="2"/>
+  <polygon points="272,265 280,270 270,273" fill="#222"/>
+  <line x1="360" y1="245" x2="308" y2="230" stroke="#222" stroke-width="2"/>
+  <text x="185" y="235" font-size="11" fill="#333">Q1</text>
+  <line x1="280" y1="270" x2="280" y2="295" stroke="#222" stroke-width="2"/>
+  <line x1="265" y1="295" x2="295" y2="295" stroke="#222" stroke-width="2.5"/>
+  <text x="302" y="300" font-size="12" fill="#333">GND</text>
+
+  <text x="40" y="315" font-size="11" fill="#555">Turning the pot changes average brightness - boards do this with fast on/off (PWM).</text>
+</svg>

@@ -7,7 +7,7 @@ and components — the foundation for programming real embedded projects.
 **Path so far:** If you are following the course in order, you may already know
 [Scratch](../01-scratch/scratch-programming.md). The same ideas — loops, “when something
 happens,” and and/or logic — show up here as wires and parts. After these missions,
-continue to the [micro:bit V2 guide](../03-microbit/microbit-v2.md).
+continue to the [micro:bit V2 guide](../04-microbit/microbit-v2.md).
 
 In coding, you build with blocks or text. Here, you are going to build with electrons.
 This guide has **Mission 0 (safety)** plus **8 circuit missions**. For each circuit, you
@@ -454,7 +454,11 @@ ______________________________________________________________________
 You can now read a schematic, protect an LED, use a switch and sensors, and build simple
 logic and timing in hardware.
 
-1. Continue to the [Guide to micro:bit V2](../03-microbit/microbit-v2.md) to connect
+1. Continue to the [Guide to micro:bit V2](../04-microbit/microbit-v2.md) to connect
    coding blocks (MakeCode) to a real board with sensors and outputs.
-2. Revisit [Learning Scratch Programming](../01-scratch/scratch-programming.md) anytime
+2. After micro:bit, come back for [Intermediate Circuits](intermediate.md) (same
+   Circuits module) before Arduino — motors, diodes, and stronger switching.
+3. Revisit [Learning Scratch Programming](../01-scratch/scratch-programming.md) anytime
    you want more practice with the same logic ideas in software.
+4. Came from SPIKE? You already moved motors and sensors in a closed kit — here you wire
+   the parts yourself.

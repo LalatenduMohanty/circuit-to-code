@@ -27,7 +27,7 @@ SKIP_FILE_NAMES = {
     "readme.md",
 }
 
-# Numbered module folders: 01-scratch, 02-circuits, …
+# Numbered module folders: 01-scratch, 02-spike-prime, 03-circuits, …
 _MODULE_DIR_RE = re.compile(r"^(\d+)-(.+)$")
 
 
@@ -274,7 +274,9 @@ def resolve_lesson_selectors(
     """
     modules = list_lesson_modules(repo_root)
     if not modules:
-        raise ValueError(f"No lesson modules found under {repo_root / LESSONS_DIR_NAME}")
+        raise ValueError(
+            f"No lesson modules found under {repo_root / LESSONS_DIR_NAME}"
+        )
 
     by_short = {module.short_id: module for module in modules}
     by_folder = {module.folder.lower(): module for module in modules}
@@ -298,9 +300,7 @@ def resolve_lesson_selectors(
         selected.append(module)
 
     if unknown:
-        valid = ", ".join(
-            f"{module.short_id} ({module.folder})" for module in modules
-        )
+        valid = ", ".join(f"{module.short_id} ({module.folder})" for module in modules)
         raise ValueError(
             f"Unknown lesson selector(s): {', '.join(unknown)}. Valid: {valid}"
         )
@@ -519,7 +519,9 @@ def generate_pdf(
     version = version or __version__
     lesson_ids: list[str] | None = None
     if lessons:
-        lesson_ids = [module.short_id for module in resolve_lesson_selectors(repo_root, lessons)]
+        lesson_ids = [
+            module.short_id for module in resolve_lesson_selectors(repo_root, lessons)
+        ]
 
     output = output or default_output_path(repo_root, version, lesson_ids=lesson_ids)
 

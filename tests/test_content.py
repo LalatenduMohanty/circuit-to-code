@@ -12,23 +12,33 @@ from svg_validation import assert_valid_svg
 
 # Explicit curriculum checklist — rename/remove must be intentional.
 REQUIRED_DIAGRAMS = [
-    "lessons/02-circuits/diagrams/symbols-legend.svg",
-    "lessons/02-circuits/diagrams/circuit-01-led-loop.svg",
-    "lessons/02-circuits/diagrams/circuit-02-switch.svg",
-    "lessons/02-circuits/diagrams/circuit-02-tactile-button.svg",
-    "lessons/02-circuits/diagrams/circuit-03-series-parallel.svg",
-    "lessons/02-circuits/diagrams/circuit-04-potentiometer.svg",
-    "lessons/02-circuits/diagrams/circuit-05-photoresistor.svg",
-    "lessons/02-circuits/diagrams/circuit-06-and-gate.svg",
-    "lessons/02-circuits/diagrams/circuit-07-capacitor.svg",
-    "lessons/02-circuits/diagrams/circuit-08-flasher.svg",
-    "lessons/03-microbit/diagrams/microbit-v2-overview.jpg",
+    "lessons/03-circuits/diagrams/symbols-legend.svg",
+    "lessons/03-circuits/diagrams/circuit-01-led-loop.svg",
+    "lessons/03-circuits/diagrams/circuit-02-switch.svg",
+    "lessons/03-circuits/diagrams/circuit-02-tactile-button.svg",
+    "lessons/03-circuits/diagrams/circuit-03-series-parallel.svg",
+    "lessons/03-circuits/diagrams/circuit-04-potentiometer.svg",
+    "lessons/03-circuits/diagrams/circuit-05-photoresistor.svg",
+    "lessons/03-circuits/diagrams/circuit-06-and-gate.svg",
+    "lessons/03-circuits/diagrams/circuit-07-capacitor.svg",
+    "lessons/03-circuits/diagrams/circuit-08-flasher.svg",
+    "lessons/03-circuits/diagrams/intermediate-symbols-legend.svg",
+    "lessons/03-circuits/diagrams/intermediate-circuit-01-transistor-load.svg",
+    "lessons/03-circuits/diagrams/intermediate-circuit-02-diode.svg",
+    "lessons/03-circuits/diagrams/intermediate-circuit-03-voltage-divider.svg",
+    "lessons/03-circuits/diagrams/intermediate-circuit-04-motor-driver.svg",
+    "lessons/03-circuits/diagrams/intermediate-circuit-05-pwm-throttle.svg",
+    "lessons/04-microbit/diagrams/microbit-v2-overview.jpg",
 ]
 
 LESSON_FILES = [
     "lessons/01-scratch/scratch-programming.md",
-    "lessons/02-circuits/beginner.md",
-    "lessons/03-microbit/microbit-v2.md",
+    "lessons/02-spike-prime/spike-prime.md",
+    "lessons/03-circuits/beginner.md",
+    "lessons/03-circuits/intermediate.md",
+    "lessons/04-microbit/microbit-v2.md",
+    "lessons/05-circuitpython/circuitpython.md",
+    "lessons/06-arduino/arduino.md",
 ]
 
 
@@ -46,7 +56,16 @@ def test_find_markdown_files_includes_lessons_in_course_order(repo_root: Path) -
 def test_find_markdown_files_filters_to_one_module(repo_root: Path) -> None:
     files = find_markdown_files(repo_root, lessons=["microbit"])
     rels = [path.relative_to(repo_root).as_posix() for path in files]
-    assert rels == ["lessons/03-microbit/microbit-v2.md"]
+    assert rels == ["lessons/04-microbit/microbit-v2.md"]
+
+
+def test_find_markdown_files_circuits_includes_both_sections(repo_root: Path) -> None:
+    files = find_markdown_files(repo_root, lessons=["circuits"])
+    rels = [path.relative_to(repo_root).as_posix() for path in files]
+    assert rels == [
+        "lessons/03-circuits/beginner.md",
+        "lessons/03-circuits/intermediate.md",
+    ]
 
 
 def test_find_markdown_files_skips_meta_docs(repo_root: Path) -> None:
@@ -71,8 +90,9 @@ def test_required_diagram_exists(repo_root: Path, relative: str) -> None:
 @pytest.mark.parametrize(
     "lesson",
     [
-        "lessons/02-circuits/beginner.md",
-        "lessons/03-microbit/microbit-v2.md",
+        "lessons/03-circuits/beginner.md",
+        "lessons/03-circuits/intermediate.md",
+        "lessons/04-microbit/microbit-v2.md",
     ],
 )
 def test_lesson_references_existing_images(repo_root: Path, lesson: str) -> None:

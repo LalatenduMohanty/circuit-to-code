@@ -29,9 +29,7 @@ def test_default_output_path_includes_version(repo_root: Path) -> None:
 def test_default_output_path_includes_lesson_slug(repo_root: Path) -> None:
     path = default_output_path(repo_root, "1.2.3", lesson_ids=["scratch"])
     assert path == repo_root / "pdf" / "circuit-to-code-scratch-v1.2.3.pdf"
-    multi = default_output_path(
-        repo_root, "1.2.3", lesson_ids=["scratch", "circuits"]
-    )
+    multi = default_output_path(repo_root, "1.2.3", lesson_ids=["scratch", "circuits"])
     assert multi == repo_root / "pdf" / "circuit-to-code-scratch-circuits-v1.2.3.pdf"
 
 
@@ -40,13 +38,23 @@ def test_css_mentions_version() -> None:
     assert "Version 9.9.9" in css
 
 
-def test_list_lesson_modules_discovers_three(repo_root: Path) -> None:
+def test_list_lesson_modules_discovers_six(repo_root: Path) -> None:
     modules = list_lesson_modules(repo_root)
-    assert [m.short_id for m in modules] == ["scratch", "circuits", "microbit"]
+    assert [m.short_id for m in modules] == [
+        "scratch",
+        "spike-prime",
+        "circuits",
+        "microbit",
+        "circuitpython",
+        "arduino",
+    ]
     assert [m.folder for m in modules] == [
         "01-scratch",
-        "02-circuits",
-        "03-microbit",
+        "02-spike-prime",
+        "03-circuits",
+        "04-microbit",
+        "05-circuitpython",
+        "06-arduino",
     ]
 
 
@@ -56,12 +64,21 @@ def test_list_lesson_modules_discovers_three(repo_root: Path) -> None:
         ("scratch", "scratch"),
         ("01-scratch", "scratch"),
         ("1", "scratch"),
+        ("spike-prime", "spike-prime"),
+        ("02-spike-prime", "spike-prime"),
+        ("2", "spike-prime"),
         ("circuits", "circuits"),
-        ("02-circuits", "circuits"),
-        ("2", "circuits"),
+        ("03-circuits", "circuits"),
+        ("3", "circuits"),
         ("microbit", "microbit"),
-        ("03-microbit", "microbit"),
-        ("3", "microbit"),
+        ("04-microbit", "microbit"),
+        ("4", "microbit"),
+        ("circuitpython", "circuitpython"),
+        ("05-circuitpython", "circuitpython"),
+        ("5", "circuitpython"),
+        ("arduino", "arduino"),
+        ("06-arduino", "arduino"),
+        ("6", "arduino"),
     ],
 )
 def test_resolve_lesson_selectors_aliases(
@@ -86,7 +103,10 @@ def test_resolve_lesson_selectors_unknown(repo_root: Path) -> None:
 def test_find_markdown_files_filters_by_lesson(repo_root: Path) -> None:
     files = find_markdown_files(repo_root, lessons=["circuits"])
     rels = [path.relative_to(repo_root).as_posix() for path in files]
-    assert rels == ["lessons/02-circuits/beginner.md"]
+    assert rels == [
+        "lessons/03-circuits/beginner.md",
+        "lessons/03-circuits/intermediate.md",
+    ]
 
 
 def test_html_document_includes_version_banner(repo_root: Path) -> None:
@@ -107,8 +127,12 @@ def test_html_document_includes_table_of_contents(repo_root: Path) -> None:
     assert 'class="toc"' in document
     assert "<h1>Contents</h1>" in document
     assert "Learning Scratch Programming" in document
+    assert "LEGO SPIKE Prime (optional)" in document
     assert "Beginner Circuits" in document
     assert "Guide to micro:bit V2" in document
+    assert "Intermediate Circuits" in document
+    assert "Guide to CircuitPython" in document
+    assert "Guide to Arduino" in document
     assert "target-counter(attr(href), page)" in document
     assert 'href="#lessons-01-scratch-scratch-programming-1"' in document
 
@@ -120,14 +144,18 @@ def test_filtered_html_includes_only_selected_lesson(repo_root: Path) -> None:
     )
     assert "Learning Scratch Programming" in document
     assert "Source: lessons/01-scratch/scratch-programming.md" in document
-    assert "Source: lessons/02-circuits/beginner.md" not in document
-    assert "Source: lessons/03-microbit/microbit-v2.md" not in document
-    assert 'id="lessons-02-circuits-beginner-1"' not in document
+    assert "Source: lessons/02-spike-prime/spike-prime.md" not in document
+    assert "Source: lessons/03-circuits/beginner.md" not in document
+    assert "Source: lessons/03-circuits/intermediate.md" not in document
+    assert "Source: lessons/04-microbit/microbit-v2.md" not in document
+    assert "Source: lessons/05-circuitpython/circuitpython.md" not in document
+    assert "Source: lessons/06-arduino/arduino.md" not in document
+    assert 'id="lessons-03-circuits-beginner-1"' not in document
     assert PROJECT_TAGLINE not in document
 
 
 def test_markdown_to_html_rewrites_local_images(repo_root: Path) -> None:
-    beginner = repo_root / "lessons" / "02-circuits" / "beginner.md"
+    beginner = repo_root / "lessons" / "03-circuits" / "beginner.md"
     html = markdown_to_html(beginner)
     assert "file://" in html
     assert "symbols-legend.svg" in html

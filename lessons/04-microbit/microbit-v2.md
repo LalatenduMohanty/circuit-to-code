@@ -59,7 +59,7 @@ For bigger builds (robots, motors, custom sensors — including projects like a
 “Bat-Bot”-style ultrasonic robot), you will want discrete parts beyond the Go Bundle.
 
 If you are new to breadboards, resistors, and transistors, complete
-[Beginner Circuits](../02-circuits/beginner.md) first — then come back here for
+[Beginner Circuits](../03-circuits/beginner.md) first — then come back here for
 micro:bit projects that mix board + wiring.
 
 - **Transistors:** [Buy on Amazon](https://www.amazon.com/dp/B0C1V6Y8ND)
@@ -100,7 +100,7 @@ to bottom, or jump to a topic you need.
 
 ### Basics of electronic parts
 
-These videos overlap with ideas in [Beginner Circuits](../02-circuits/beginner.md). Use
+These videos overlap with ideas in [Beginner Circuits](../03-circuits/beginner.md). Use
 them as a refresher, or watch before wiring sensors to the micro:bit.
 
 - [How to Use a Breadboard](https://www.youtube.com/watch?v=6WReFkfrUIk)
@@ -147,8 +147,19 @@ ______________________________________________________________________
 
 ## What’s next
 
-- New to electronics wiring? → [Beginner Circuits](../02-circuits/beginner.md)
-- Want stronger block-coding habits? →
-  [Learning Scratch Programming](../01-scratch/scratch-programming.md)
-- Ready to invent? Combine MakeCode with sensors, motors, and the expansion board — then
-  share what you build.
+Beginner Circuits should come **before** this guide. If you skipped it:
+
+- New to electronics wiring? → [Beginner Circuits](../03-circuits/beginner.md)
+
+Otherwise continue the **core path**:
+
+1. [Intermediate Circuits](../03-circuits/intermediate.md) — the second section of the
+   Circuits module (transistors that drive real loads, diodes, voltage dividers, and a
+   safe DC motor switch). **Required before CircuitPython or Arduino.**
+2. After Intermediate →
+   [CircuitPython (recommended)](../05-circuitpython/circuitpython.md) and/or
+   [Arduino sketches](../06-arduino/arduino.md).
+3. Want stronger block-coding habits? →
+   [Learning Scratch Programming](../01-scratch/scratch-programming.md)
+4. Ready to invent on the micro:bit? Combine MakeCode with sensors, motors, and the
+   expansion board — then share what you build.

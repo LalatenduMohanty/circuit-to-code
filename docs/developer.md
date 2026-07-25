@@ -29,8 +29,8 @@ hatch run pdf --lesson circuits --lesson microbit
 hatch build -t custom pdf               # full book only
 ```
 
-`--lesson` accepts short id (`scratch`), folder (`01-scratch`), or number (`1`).
-The Hatch `pdf` script forwards args to the CLI (`circuit-to-code {args}`).
+`--lesson` accepts short id (`scratch`), folder (`01-scratch`), or number (`1`). The
+Hatch `pdf` script forwards args to the CLI (`circuit-to-code {args}`).
 
 ### Lint / format / type-check
 
@@ -76,14 +76,25 @@ mdformat 1.x reads **`.mdformat.toml`** (not `[tool.mdformat]` in `pyproject.tom
 Numbered folders under `lessons/` define the recommended path and PDF order:
 
 1. `01-scratch` — Scratch programming
-2. `02-circuits` — breadboard electronics
-3. `03-microbit` — BBC micro:bit V2
+2. `02-spike-prime` — LEGO SPIKE Prime *(optional)*
+3. `03-circuits` — breadboard electronics (`beginner.md` + `intermediate.md`)
+4. `04-microbit` — BBC micro:bit V2
+5. `05-circuitpython` — CircuitPython on Pico (or Nano RP2040); recommended text path
+6. `06-arduino` — Arduino Uno C++ sketches; alternate / follow-on text path
+
+Learning order for Circuits: Beginner → micro:bit → Intermediate (both circuit files
+live in `03-circuits/`; handoffs describe when to read each section). CircuitPython and
+Arduino both require both Circuits sections; CircuitPython is the gentler default after
+Intermediate.
+
+**Planned later:** deeper mission labs; ESP32; full Raspberry Pi; libraries and shields;
+capstone / certificate.
 
 ### Adding a module
 
-Create the next numbered folder under `lessons/`, for example `04-spike-prime/`, put the
-lesson markdown inside, and keep module-specific images in that folder’s `diagrams/`
-directory. Zero-padded numbers keep GitHub and the printable PDF in the same order. The
+Create the next numbered folder under `lessons/`, for example `07-…/`, put the lesson
+markdown inside, and keep module-specific images in that folder’s `diagrams/` directory.
+Zero-padded numbers keep GitHub and the printable PDF in the same order. The
 learner-facing syllabus lives in [`lessons/README.md`](../lessons/README.md).
 
 ## CI

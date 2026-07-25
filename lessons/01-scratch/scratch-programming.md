@@ -147,7 +147,11 @@ ______________________________________________________________________
 
 ## What’s next
 
-When Scratch conditionals, loops, and “when X happens” events feel familiar, continue to
-[Beginner Circuits](../02-circuits/beginner.md). There you will build the same ideas
-with wires and components — then connect software and hardware with the
-[micro:bit V2 guide](../03-microbit/microbit-v2.md).
+When Scratch conditionals, loops, and “when X happens” events feel familiar:
+
+1. **Optional:** If you have a LEGO SPIKE Prime set (or care about First Lego League),
+   try the short [SPIKE Prime outline](../02-spike-prime/spike-prime.md) — same coding
+   ideas on a robot, using LEGO’s official lessons.
+2. **Core path:** Continue to [Beginner Circuits](../03-circuits/beginner.md). There you
+   will build the same ideas with wires and components — then connect software and
+   hardware with the [micro:bit V2 guide](../04-microbit/microbit-v2.md).
