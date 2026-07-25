@@ -10,7 +10,7 @@ Circuits (Intermediate) → CircuitPython and/or Arduino; optional SPIKE Prime a
 Scratch).
 
 **Download the printable PDF:**
-[`pdf/circuit-to-code-v0.2.0.pdf`](pdf/circuit-to-code-v0.2.0.pdf)
+[`pdf/circuit-to-code-v0.3.0.pdf`](pdf/circuit-to-code-v0.3.0.pdf)
 
 ## Generate the PDF
 
@@ -37,7 +37,7 @@ hatch run pdf
 This writes a versioned file under `pdf/`, for example:
 
 ```text
-pdf/circuit-to-code-v0.2.0.pdf
+pdf/circuit-to-code-v0.3.0.pdf
 ```
 
 ### Specific lessons
@@ -57,7 +57,7 @@ hatch run pdf --lesson scratch --lesson circuits
 Selectors accept the short id (`scratch`, `spike-prime`, `circuits`, `circuitpython`,
 `arduino`), folder name (`01-scratch`), or order number (`1`). The `circuits` module
 includes both Beginner and Intermediate sections. Filtered builds write names like
-`pdf/circuit-to-code-scratch-v0.2.0.pdf`.
+`pdf/circuit-to-code-scratch-v0.3.0.pdf`.
 
 ### Other ways to build
 
