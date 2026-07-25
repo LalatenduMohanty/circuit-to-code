@@ -6,8 +6,9 @@ choose a text path:
 - **Recommended:** [CircuitPython](05-circuitpython/) (Python on Pico / Nano RP2040)
 - **Also available:** [Arduino](06-arduino/) (Uno + C++ sketches)
 
-You can do both text paths; CircuitPython is usually the gentler jump from Scratch /
-MakeCode.
+Then continue to **[Robot Missions](07-robot-missions/)** (timed missions, driver
+control, safe motors). You can do both text paths first; CircuitPython is usually the
+gentler jump from Scratch / MakeCode.
 
 **Optional:** After Scratch, try SPIKE Prime if you have the kit — then continue to
 Beginner Circuits. Skipping SPIKE is fine.
@@ -18,14 +19,18 @@ micro:bit (and before CircuitPython or Arduino).
 
 Each folder is a self-contained unit with its lesson markdown and any diagrams it needs.
 
-| Order | Module                                   | What you learn                                      |
-| ----- | ---------------------------------------- | --------------------------------------------------- |
-| 1     | [`01-scratch/`](01-scratch/)             | Block coding foundations with Scratch               |
-| 2     | [`02-spike-prime/`](02-spike-prime/)     | *(Optional)* Same ideas on LEGO SPIKE Prime         |
-| 3     | [`03-circuits/`](03-circuits/)           | Breadboard electronics — Beginner + Intermediate    |
-| 4     | [`04-microbit/`](04-microbit/)           | Physical computing with the BBC micro:bit V2        |
-| 5     | [`05-circuitpython/`](05-circuitpython/) | Python on Pico (or Nano RP2040) — gentler text path |
-| 6     | [`06-arduino/`](06-arduino/)             | C++ sketches on Arduino Uno                         |
+| Order | Module                                     | What you learn                                      |
+| ----- | ------------------------------------------ | --------------------------------------------------- |
+| 1     | [`01-scratch/`](01-scratch/)               | Block coding foundations with Scratch               |
+| 2     | [`02-spike-prime/`](02-spike-prime/)       | *(Optional)* Same ideas on LEGO SPIKE Prime         |
+| 3     | [`03-circuits/`](03-circuits/)             | Breadboard electronics — Beginner + Intermediate    |
+| 4     | [`04-microbit/`](04-microbit/)             | Physical computing with the BBC micro:bit V2        |
+| 5     | [`05-circuitpython/`](05-circuitpython/)   | Python on Pico (or Nano RP2040) — gentler text path |
+| 6     | [`06-arduino/`](06-arduino/)               | C++ sketches on Arduino Uno                         |
+| 7     | [`07-robot-missions/`](07-robot-missions/) | Mission robots — timed + driver control             |
+
+**Mentors:** skills map and meeting ideas for Robot Missions are in
+[`docs/robot-missions-coach.md`](../docs/robot-missions-coach.md).
 
 **Coming later:** deeper mission labs, ESP32, full Raspberry Pi, libraries/shields, and
 a capstone / certificate track.
@@ -104,3 +109,16 @@ a capstone / certificate track.
 - [6. Curated projects](06-arduino/arduino.md#6-curated-projects-build-these-next)
 - [7. Learning checklist](06-arduino/arduino.md#7-learning-checklist)
 - [What’s next](06-arduino/arduino.md#whats-next)
+
+### 7. [Robot Missions](07-robot-missions/robot-missions.md)
+
+- [You’re building mission robots](07-robot-missions/robot-missions.md#youre-building-mission-robots)
+- [Two ways to practice](07-robot-missions/robot-missions.md#two-ways-to-practice)
+- [Mission 0: Robot lab rules](07-robot-missions/robot-missions.md#mission-0-robot-lab-rules)
+- [Lab A: Two kinds of programs](07-robot-missions/robot-missions.md#lab-a-two-kinds-of-programs)
+- [Lab B: One motor + one sensor](07-robot-missions/robot-missions.md#lab-b-one-motor--one-sensor)
+- [Lab C: Arm positions (servo)](07-robot-missions/robot-missions.md#lab-c-arm-positions-servo)
+- [Lab D: Driver station thinking](07-robot-missions/robot-missions.md#lab-d-driver-station-thinking)
+- [Lab E: Move by counting](07-robot-missions/robot-missions.md#lab-e-move-by-counting)
+- [Mission ready checklist](07-robot-missions/robot-missions.md#mission-ready-checklist)
+- [What’s next](07-robot-missions/robot-missions.md#whats-next)

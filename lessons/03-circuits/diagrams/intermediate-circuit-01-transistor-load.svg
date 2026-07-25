@@ -1,9 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 320" font-family="Segoe UI, Helvetica, Arial, sans-serif">
-  <rect width="560" height="320" fill="#fafafa"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <rect width="600" height="340" fill="#fafafa"/>
   <text x="16" y="24" font-size="14" font-weight="700" fill="#1a1a1a">Circuit 1 - Transistor Switches a Heavier Load</text>
-  <line x1="40" y1="50" x2="480" y2="50" stroke="#c62828" stroke-width="2"/>
-  <text x="490" y="54" font-size="13" font-weight="700" fill="#c62828">+5V</text>
+  <line x1="40" y1="50" x2="520" y2="50" stroke="#c62828" stroke-width="2"/>
+  <text x="530" y="54" font-size="13" font-weight="700" fill="#c62828">+5V</text>
 
+  <!-- Base control path -->
   <line x1="100" y1="50" x2="100" y2="80" stroke="#222" stroke-width="2"/>
   <circle cx="100" cy="85" r="3" fill="#222"/>
   <line x1="100" y1="85" x2="125" y2="70" stroke="#222" stroke-width="2"/>
@@ -12,37 +13,53 @@
   <line x1="130" y1="85" x2="160" y2="85" stroke="#222" stroke-width="2"/>
   <path d="M160 85 H170 L175 73 L185 97 L195 73 L205 97 L210 85 H220" fill="none" stroke="#222" stroke-width="2"/>
   <text x="165" y="115" font-size="10" fill="#333">10k ohm</text>
-  <line x1="220" y1="85" x2="220" y2="180" stroke="#222" stroke-width="2"/>
-  <text x="145" y="160" font-size="10" fill="#1565c0">Base (small signal)</text>
+  <line x1="220" y1="85" x2="220" y2="250" stroke="#222" stroke-width="2"/>
+  <text x="130" y="170" font-size="10" fill="#1565c0">Base (small signal)</text>
 
+  <!-- Parallel load bus from +5V -->
   <line x1="360" y1="50" x2="360" y2="70" stroke="#222" stroke-width="2"/>
-  <path d="M360 70 L360 78 L348 83 L372 93 L348 103 L360 108 L360 116" fill="none" stroke="#222" stroke-width="2"/>
-  <text x="378" y="95" font-size="10" fill="#333">220 ohm</text>
-  <line x1="360" y1="116" x2="360" y2="130" stroke="#222" stroke-width="2"/>
-  <polygon points="345,130 375,130 360,150" fill="none" stroke="#222" stroke-width="2"/>
-  <line x1="345" y1="150" x2="375" y2="150" stroke="#222" stroke-width="2.5"/>
-  <text x="382" y="145" font-size="10" fill="#333">LED A</text>
-  <line x1="360" y1="150" x2="360" y2="165" stroke="#222" stroke-width="2"/>
-  <path d="M360 165 L360 173 L348 178 L372 188 L348 198 L360 203 L360 211" fill="none" stroke="#222" stroke-width="2"/>
-  <text x="378" y="190" font-size="10" fill="#333">220 ohm</text>
-  <line x1="360" y1="211" x2="360" y2="225" stroke="#222" stroke-width="2"/>
-  <polygon points="345,225 375,225 360,245" fill="none" stroke="#222" stroke-width="2"/>
-  <line x1="345" y1="245" x2="375" y2="245" stroke="#222" stroke-width="2.5"/>
-  <text x="382" y="240" font-size="10" fill="#333">LED B</text>
-  <line x1="360" y1="245" x2="360" y2="265" stroke="#222" stroke-width="2"/>
-  <text x="370" y="262" font-size="10" fill="#1565c0">Collector (bigger current)</text>
+  <line x1="300" y1="70" x2="420" y2="70" stroke="#222" stroke-width="2"/>
 
-  <circle cx="280" cy="265" r="30" fill="#fafafa" stroke="#222" stroke-width="2"/>
-  <line x1="220" y1="180" x2="220" y2="265" stroke="#222" stroke-width="2"/>
-  <line x1="220" y1="265" x2="250" y2="265" stroke="#222" stroke-width="2"/>
-  <line x1="250" y1="250" x2="250" y2="280" stroke="#222" stroke-width="3"/>
-  <line x1="250" y1="255" x2="280" y2="240" stroke="#222" stroke-width="2"/>
-  <line x1="250" y1="275" x2="280" y2="290" stroke="#222" stroke-width="2"/>
-  <polygon points="272,285 280,290 270,293" fill="#222"/>
-  <line x1="360" y1="265" x2="310" y2="250" stroke="#222" stroke-width="2"/>
-  <text x="200" y="255" font-size="11" fill="#333">Q1</text>
-  <line x1="280" y1="290" x2="280" y2="305" stroke="#222" stroke-width="2"/>
-  <line x1="265" y1="305" x2="295" y2="305" stroke="#222" stroke-width="2.5"/>
-  <line x1="268" y1="311" x2="292" y2="311" stroke="#222" stroke-width="2"/>
-  <text x="302" y="310" font-size="12" fill="#333">GND</text>
+  <!-- Branch A (left) -->
+  <text x="270" y="68" font-size="10" font-weight="600" fill="#555">Branch A</text>
+  <line x1="300" y1="70" x2="300" y2="90" stroke="#222" stroke-width="2"/>
+  <path d="M300 90 L300 98 L288 103 L312 113 L288 123 L300 128 L300 136" fill="none" stroke="#222" stroke-width="2"/>
+  <text x="220" y="118" font-size="10" fill="#333">220 ohm</text>
+  <line x1="300" y1="136" x2="300" y2="155" stroke="#222" stroke-width="2"/>
+  <polygon points="285,155 315,155 300,175" fill="none" stroke="#222" stroke-width="2"/>
+  <line x1="285" y1="175" x2="315" y2="175" stroke="#222" stroke-width="2.5"/>
+  <text x="220" y="170" font-size="10" fill="#333">LED A</text>
+  <line x1="300" y1="175" x2="300" y2="220" stroke="#222" stroke-width="2"/>
+
+  <!-- Branch B (right) -->
+  <text x="400" y="68" font-size="10" font-weight="600" fill="#555">Branch B</text>
+  <line x1="420" y1="70" x2="420" y2="90" stroke="#222" stroke-width="2"/>
+  <path d="M420 90 L420 98 L408 103 L432 113 L408 123 L420 128 L420 136" fill="none" stroke="#222" stroke-width="2"/>
+  <text x="438" y="118" font-size="10" fill="#333">220 ohm</text>
+  <line x1="420" y1="136" x2="420" y2="155" stroke="#222" stroke-width="2"/>
+  <polygon points="405,155 435,155 420,175" fill="none" stroke="#222" stroke-width="2"/>
+  <line x1="405" y1="175" x2="435" y2="175" stroke="#222" stroke-width="2.5"/>
+  <text x="438" y="170" font-size="10" fill="#333">LED B</text>
+  <line x1="420" y1="175" x2="420" y2="220" stroke="#222" stroke-width="2"/>
+
+  <!-- Join branches to collector -->
+  <line x1="300" y1="220" x2="420" y2="220" stroke="#222" stroke-width="2"/>
+  <line x1="360" y1="220" x2="360" y2="250" stroke="#222" stroke-width="2"/>
+  <text x="370" y="245" font-size="10" fill="#1565c0">Collector (both branches)</text>
+
+  <!-- Transistor -->
+  <circle cx="280" cy="250" r="30" fill="#fafafa" stroke="#222" stroke-width="2"/>
+  <line x1="220" y1="250" x2="250" y2="250" stroke="#222" stroke-width="2"/>
+  <line x1="250" y1="235" x2="250" y2="265" stroke="#222" stroke-width="3"/>
+  <line x1="250" y1="240" x2="280" y2="225" stroke="#222" stroke-width="2"/>
+  <line x1="250" y1="260" x2="280" y2="275" stroke="#222" stroke-width="2"/>
+  <polygon points="272,270 280,275 270,278" fill="#222"/>
+  <line x1="360" y1="250" x2="310" y2="235" stroke="#222" stroke-width="2"/>
+  <text x="200" y="240" font-size="11" fill="#333">Q1</text>
+  <line x1="280" y1="275" x2="280" y2="300" stroke="#222" stroke-width="2"/>
+  <line x1="265" y1="300" x2="295" y2="300" stroke="#222" stroke-width="2.5"/>
+  <line x1="268" y1="306" x2="292" y2="306" stroke="#222" stroke-width="2"/>
+  <text x="302" y="305" font-size="12" fill="#333">GND</text>
+
+  <text x="40" y="330" font-size="11" fill="#555">Two parallel LED paths share one transistor switch — more collector current than one LED alone.</text>
 </svg>

@@ -93,11 +93,15 @@ Numbered folders under `lessons/` define the recommended path and PDF order:
 4. `04-microbit` — BBC micro:bit V2
 5. `05-circuitpython` — CircuitPython on Pico (or Nano RP2040); recommended text path
 6. `06-arduino` — Arduino Uno C++ sketches; alternate / follow-on text path
+7. `07-robot-missions` — timed missions, driver control, safe motors (classroom + hub)
 
 Learning order for Circuits: Beginner → micro:bit → Intermediate (both circuit files
 live in `03-circuits/`; handoffs describe when to read each section). CircuitPython and
 Arduino both require both Circuits sections; CircuitPython is the gentler default after
-Intermediate.
+Intermediate. Robot Missions comes after at least one text path.
+
+Mentor notes for Robot Missions (excluded from the lesson PDF):
+[`robot-missions-coach.md`](robot-missions-coach.md).
 
 **Planned later:** deeper mission labs; ESP32; full Raspberry Pi; libraries and shields;
 capstone / certificate.

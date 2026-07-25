@@ -6,11 +6,11 @@ schematics and a printable PDF.
 
 **Start here:** course path and full contents are in
 [`lessons/README.md`](lessons/README.md) (Scratch → Circuits (Beginner) → micro:bit →
-Circuits (Intermediate) → CircuitPython and/or Arduino; optional SPIKE Prime after
-Scratch).
+Circuits (Intermediate) → CircuitPython and/or Arduino → Robot Missions; optional SPIKE
+Prime after Scratch).
 
 **Download the printable PDF:**
-[`pdf/circuit-to-code-v0.3.0.pdf`](pdf/circuit-to-code-v0.3.0.pdf)
+[`pdf/circuit-to-code-v0.4.0.pdf`](pdf/circuit-to-code-v0.4.0.pdf)
 
 ## Generate the PDF
 
@@ -37,7 +37,7 @@ hatch run pdf
 This writes a versioned file under `pdf/`, for example:
 
 ```text
-pdf/circuit-to-code-v0.3.0.pdf
+pdf/circuit-to-code-v0.4.0.pdf
 ```
 
 ### Specific lessons
@@ -51,13 +51,14 @@ hatch run pdf --lesson circuits
 hatch run pdf --lesson microbit
 hatch run pdf --lesson circuitpython
 hatch run pdf --lesson arduino
+hatch run pdf --lesson robot-missions
 hatch run pdf --lesson scratch --lesson circuits
 ```
 
 Selectors accept the short id (`scratch`, `spike-prime`, `circuits`, `circuitpython`,
-`arduino`), folder name (`01-scratch`), or order number (`1`). The `circuits` module
-includes both Beginner and Intermediate sections. Filtered builds write names like
-`pdf/circuit-to-code-scratch-v0.3.0.pdf`.
+`arduino`, `robot-missions`), folder name (`01-scratch`), or order number (`1`). The
+`circuits` module includes both Beginner and Intermediate sections. Filtered builds
+write names like `pdf/circuit-to-code-scratch-v0.4.0.pdf`.
 
 ### Other ways to build
 

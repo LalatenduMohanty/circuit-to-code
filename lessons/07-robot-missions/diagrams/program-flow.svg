@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 280" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <rect width="640" height="280" fill="#fafafa"/>
+  <text x="20" y="28" font-size="16" font-weight="700" fill="#1a1a1a">Two kinds of robot programs</text>
+
+  <rect x="40" y="50" width="140" height="48" rx="6" fill="#e3f2fd" stroke="#1565c0" stroke-width="2"/>
+  <text x="70" y="72" font-size="12" font-weight="600" fill="#0d47a1">1. Set up</text>
+  <text x="55" y="88" font-size="10" fill="#333">Name motors and sensors</text>
+
+  <line x1="180" y1="74" x2="210" y2="74" stroke="#222" stroke-width="2"/>
+  <polygon points="210,74 200,69 200,79" fill="#222"/>
+
+  <rect x="210" y="50" width="160" height="48" rx="6" fill="#fff3e0" stroke="#ef6c00" stroke-width="2"/>
+  <text x="230" y="72" font-size="12" font-weight="600" fill="#e65100">2. Wait for start</text>
+  <text x="225" y="88" font-size="10" fill="#333">Do not move yet</text>
+
+  <line x1="370" y1="74" x2="400" y2="74" stroke="#222" stroke-width="2"/>
+  <polygon points="400,74 390,69 390,79" fill="#222"/>
+
+  <text x="405" y="58" font-size="11" font-weight="600" fill="#333">Then choose:</text>
+
+  <rect x="400" y="100" width="200" height="64" rx="6" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2"/>
+  <text x="430" y="125" font-size="12" font-weight="600" fill="#1b5e20">Timed mission</text>
+  <text x="415" y="145" font-size="10" fill="#333">Robot runs a sequence</text>
+  <text x="415" y="158" font-size="10" fill="#333">on its own (then stops)</text>
+
+  <rect x="400" y="180" width="200" height="64" rx="6" fill="#f3e5f5" stroke="#6a1b9a" stroke-width="2"/>
+  <text x="430" y="205" font-size="12" font-weight="600" fill="#4a148c">Driver control</text>
+  <text x="415" y="225" font-size="10" fill="#333">Loop: read sticks/buttons</text>
+  <text x="415" y="238" font-size="10" fill="#333">and move the robot</text>
+
+  <line x1="480" y1="74" x2="480" y2="100" stroke="#222" stroke-width="2"/>
+  <line x1="480" y1="164" x2="480" y2="180" stroke="#222" stroke-width="2"/>
+
+  <text x="40" y="160" font-size="11" fill="#444">Classroom boards: setup() / top of code.py, then loop or timed steps.</text>
+  <text x="40" y="180" font-size="11" fill="#444">Competition robot brain: configure parts, wait, then mission or drive.</text>
+</svg>

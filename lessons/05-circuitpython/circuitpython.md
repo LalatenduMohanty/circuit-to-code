@@ -163,9 +163,9 @@ ______________________________________________________________________
 ## What’s next
 
 1. **Invent and share** — sensor in, LED / sound / transistor-driven motor out.
-2. Ready for Uno + C++ sketches? → [Guide to Arduino](../06-arduino/arduino.md).
-3. Revisit [Circuits](../03-circuits/beginner.md) or the
+2. Continue to [Robot Missions](../07-robot-missions/robot-missions.md) — timed missions
+   and driver control (classroom board or competition robot brain).
+3. Ready for Uno + C++ sketches? → [Guide to Arduino](../06-arduino/arduino.md) (you can
+   do Arduino before or after Robot Missions).
+4. Revisit [Circuits](../03-circuits/beginner.md) or the
    [micro:bit guide](../04-microbit/microbit-v2.md) anytime.
-
-**Coming later on this course (planned):** deeper CircuitPython / Pico labs, ESP32,
-Raspberry Pi (full computer), Arduino schematic missions, and a capstone track.

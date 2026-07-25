@@ -38,7 +38,7 @@ def test_css_mentions_version() -> None:
     assert "Version 9.9.9" in css
 
 
-def test_list_lesson_modules_discovers_six(repo_root: Path) -> None:
+def test_list_lesson_modules_discovers_seven(repo_root: Path) -> None:
     modules = list_lesson_modules(repo_root)
     assert [m.short_id for m in modules] == [
         "scratch",
@@ -47,6 +47,7 @@ def test_list_lesson_modules_discovers_six(repo_root: Path) -> None:
         "microbit",
         "circuitpython",
         "arduino",
+        "robot-missions",
     ]
     assert [m.folder for m in modules] == [
         "01-scratch",
@@ -55,6 +56,7 @@ def test_list_lesson_modules_discovers_six(repo_root: Path) -> None:
         "04-microbit",
         "05-circuitpython",
         "06-arduino",
+        "07-robot-missions",
     ]
 
 
@@ -79,6 +81,9 @@ def test_list_lesson_modules_discovers_six(repo_root: Path) -> None:
         ("arduino", "arduino"),
         ("06-arduino", "arduino"),
         ("6", "arduino"),
+        ("robot-missions", "robot-missions"),
+        ("07-robot-missions", "robot-missions"),
+        ("7", "robot-missions"),
     ],
 )
 def test_resolve_lesson_selectors_aliases(
@@ -133,6 +138,7 @@ def test_html_document_includes_table_of_contents(repo_root: Path) -> None:
     assert "Intermediate Circuits" in document
     assert "Guide to CircuitPython" in document
     assert "Guide to Arduino" in document
+    assert "Robot Missions" in document
     assert "target-counter(attr(href), page)" in document
     assert 'href="#lessons-01-scratch-scratch-programming-1"' in document
 

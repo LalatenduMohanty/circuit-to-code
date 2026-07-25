@@ -50,8 +50,9 @@ buttons, a potentiometer, a photoresistor, capacitors, and NPN transistors.
 
 **Kit notes for this guide**
 
-- Many kits ship **2N2222** transistors instead of **2N3904**. For these missions,
-  2N2222 is a fine substitute.
+- Many kits ship **2N2222** (or PN2222A) transistors instead of **2N3904**. They work
+  the same electrically, but the **pin order is often different** — see the transistor
+  tip in Circuit 6 before you wire either part.
 - Circuit 8 asks for **470Ω** LED resistors. If your kit has **330Ω** instead (common),
   use those — the flasher still works.
 
@@ -72,7 +73,7 @@ little spare), **plus** the 9V battery and adapter above:
 | Push buttons (breadboard tactile)      | 2        | 4-pin style that fits a breadboard            |
 | 10kΩ potentiometer                     | 1        | Panel or trimmer with 3 pins                  |
 | Photoresistor (LDR)                    | 1        | Light sensor                                  |
-| 2N3904 NPN transistors                 | 2        | Or 2N2222                                     |
+| 2N3904 NPN transistors                 | 2        | Or 2N2222 (different pinout — see Circuit 6)  |
 | 100µF electrolytic capacitor           | 1        | Polarized — watch + / −                       |
 | 10µF electrolytic capacitors           | 2        | Polarized — watch + / −                       |
 
@@ -83,14 +84,16 @@ ______________________________________________________________________
 Before you plug in a single wire, remember these rules:
 
 1. **Power Off First:** Always unplug your battery module before changing wires.
-2. **The Rule of the Long Leg:** LEDs and capacitors have a direction. Electricity only
-   flows through them one way. The **long leg** always points toward the Positive (+)
-   side. For capacitors with a stripe: **long leg = +**, **stripe / short leg = −
-   (GND)**.
-3. **Resistors are Bodyguards:** An LED connected directly to 5V power will POP and burn
+2. **LEDs have a direction:** Current through an LED only works one way. The **long
+   leg (anode)** points toward the higher-voltage / Positive (+) side of that path.
+3. **Capacitors are polarized (watch the stripe):** Electrolytic capacitors store charge
+   both ways while charging and discharging, but they must be installed with the correct
+   polarity or they can be damaged. **Long leg / + mark** toward the more positive side;
+   **stripe / short leg** toward the more negative side (often GND).
+4. **Resistors are Bodyguards:** An LED connected directly to 5V power will POP and burn
    out instantly! Always protect your LED by putting a **220Ω** resistor in its path.
-4. **Never connect + straight to −:** That makes a short circuit. No “spark tests.”
-5. **Stuck? Ask before flipping forever:** If an LED will not light, check the
+5. **Never connect + straight to −:** That makes a short circuit. No “spark tests.”
+6. **Stuck? Ask before flipping forever:** If an LED will not light, check the
    troubleshooting list below. Flip the LED once if needed — then ask for help.
 
 ### Quick vocabulary
@@ -258,10 +261,13 @@ vs **parallel** (forked paths)
 **What happened?** In the Series chain, the lights are very dim (or may barely glow). In
 the Parallel fork, both are bright.
 
-**The Concept:** In a Series chain, the LEDs have to share the 5V from the battery
-(roughly half each). In a Parallel fork, they each get their own path to the full 5V.
+**The Concept:** In a Series chain, the LEDs have to share the 5V from the power
+module (same-color LEDs each drop roughly similar voltage). In a Parallel fork, they
+each get their own path to the full 5V.
 
-**Challenge:** What happens if you try 3 LEDs in series?
+**Challenge:** What happens if you try 3 LEDs in series on 5V? (Hint: three LED
+forward voltages often add up to more than 5V, so they may stay dark — especially
+blue or white LEDs.)
 
 **You built it!** You learned: series shares; parallel keeps each path strong.
 
@@ -346,9 +352,13 @@ the transistor — don’t skip it.
 **Parts Needed:** 5V Power, 1x 2N3904 NPN Transistor, 2x Push Buttons, 1x 10kΩ Resistor
 (base), 1x 220Ω Resistor (LED), 1x LED.
 
-**Transistor tip:** Hold the flat face toward you. Pins left → right are usually
-**Emitter, Base, Collector** (check your transistor’s datasheet/label if unsure).
-Emitter goes to GND.
+**Transistor tip (pinout matters!):**
+
+- **2N3904:** flat face toward you → pins left to right are usually **E – B – C**.
+- **Many kit 2N2222 / PN2222A parts:** flat face toward you → often **C – B – E**
+  (collector and emitter swapped vs 2N3904). Always match the label/datasheet for
+  *your* part — wrong pins mean the circuit will not work.
+- In this schematic, **Emitter goes to GND**.
 
 **Schematic:**
 
@@ -378,6 +388,9 @@ ______________________________________________________________________
 **Parts Needed:** 5V Power, 1x Push Button, 1x 100µF Capacitor, 1x 220Ω Resistor, 1x
 LED.
 
+*(Optional longer fade: if your kit has a larger electrolytic such as 470µF or
+1000µF, try it in place of the 100µF — same polarity.)*
+
 **Schematic:**
 
 ![Circuit 7 capacitor](diagrams/circuit-07-capacitor.svg)
@@ -385,17 +398,18 @@ LED.
 **Symbols in this circuit:** switch · polarized capacitor · resistor · LED
 
 > After you finish, unplug power. Capacitors can hold a little charge for a moment —
-> that’s why the LED fades!
+> that’s why the LED does not snap off instantly!
 
 #### The Discovery (Observation)
 
 **Experiment:** Hold the button down for 3 seconds. Then let go.
 
-**What happened?** Instead of turning off instantly, the LED fades out slowly!
+**What happened?** Instead of snapping off instantly, the LED fades for a short
+moment (with 100µF + 220Ω it is brief — a blink-out, not several seconds).
 
 **The Concept:** A capacitor is like a water tower. While the button is pressed, it
-fills up with electricity. When you let go of the button, the capacitor empties its
-stored electricity into the LED, keeping it alive for a few extra seconds.
+fills up with charge. When you let go of the button, the capacitor empties into the
+LED path, so the light dies out over a short RC delay instead of cutting off at once.
 
 **You built it!** You learned: capacitors store and release energy.
 
@@ -411,11 +425,11 @@ checklist, and double-check polarity on both capacitors.
 **Parts Needed:**
 
 - 5V Power
-- 2x 2N3904 NPN Transistors (Q1, Q2)
+- 2x 2N3904 NPN Transistors (Q1, Q2) — or 2N2222 with the correct pinout
 - 2x 10µF Capacitors (C1, C2) — watch polarity: + toward the transistor collectors
 - 2x LEDs
-- 2x 470Ω Resistors (R_LED — LED protectors)
-- 2x 10kΩ Resistors (R_B — base resistors)
+- 2x 470Ω Resistors (R_LED — LED / collector loads; 330Ω OK)
+- 2x 10kΩ Resistors (R_B — base bias to +5V)
 
 **Schematic:**
 
@@ -428,9 +442,10 @@ resistors · two LEDs
 
 1. Both emitters → GND.
 2. Each collector → its own LED → 470Ω → +5V.
-3. C1 from Q1 collector toward Q2 base (through 10kΩ at the base).
-4. C2 from Q2 collector toward Q1 base (through 10kΩ at the base).
-5. Capacitor **+** toward the collector side; stripe toward the base side.
+3. Each base → its own 10kΩ → **+5V** (these bias resistors are required).
+4. C1 from Q1 collector **directly** to Q2 base (no resistor in that path).
+5. C2 from Q2 collector **directly** to Q1 base (no resistor in that path).
+6. Capacitor **+** toward the collector side; stripe toward the base side.
 
 #### The Discovery (Observation)
 
@@ -439,11 +454,12 @@ connect power and watch.
 
 **What happened?** The LEDs flash back and forth automatically!
 
-**The Concept:** The two capacitors take turns filling up and dumping out. When one
-dumps, it turns off its transistor and turns on the other. This creates a repeating
-pulse — a simple version of how electronic circuits can make a steady “tick-tock” rhythm
-(real computers use more precise clocks, but the idea of a repeating pulse starts
-here!).
+**The Concept:** This is an **astable multivibrator** — it has no stable “rest” state,
+so it keeps flipping. When Q1 turns **on**, its collector voltage falls and C1 pulls
+Q2’s base down (Q2 off). Then C1 recharges through Q2’s 10kΩ base resistor until Q2
+turns on, which pulls Q1 off through C2 — and the cycle repeats. That repeating pulse
+is a simple hardware “tick-tock” (real computer clocks are more precise, but the idea
+starts here!).
 
 **You built it!** You learned: circuits can create loops in hardware, not only in code.
 

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 260" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <rect width="640" height="260" fill="#fafafa"/>
+  <text x="20" y="28" font-size="16" font-weight="700" fill="#1a1a1a">Timed drive vs move-by-counting</text>
+
+  <rect x="30" y="50" width="270" height="170" rx="8" fill="#ffebee" stroke="#c62828" stroke-width="2"/>
+  <text x="100" y="80" font-size="13" font-weight="700" fill="#b71c1c">Drive for 2 seconds</text>
+  <circle cx="100" cy="140" r="28" fill="#fafafa" stroke="#222" stroke-width="2"/>
+  <text x="92" y="146" font-size="16" font-weight="700" fill="#222">M</text>
+  <text x="150" y="130" font-size="11" fill="#333">Battery low - shorter</text>
+  <text x="150" y="148" font-size="11" fill="#333">Floor sticky - shorter</text>
+  <text x="150" y="166" font-size="11" fill="#333">Same code, different stop</text>
+  <text x="50" y="200" font-size="11" font-weight="600" fill="#c62828">Fragile for missions</text>
+
+  <rect x="340" y="50" width="270" height="170" rx="8" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2"/>
+  <text x="390" y="80" font-size="13" font-weight="700" fill="#1b5e20">Drive until N counts</text>
+  <circle cx="410" cy="140" r="28" fill="#fafafa" stroke="#222" stroke-width="2"/>
+  <text x="402" y="146" font-size="16" font-weight="700" fill="#222">M</text>
+  <text x="390" y="185" font-size="10" fill="#333">encoder / counter</text>
+  <rect x="460" y="115" width="120" height="50" rx="4" fill="#fafafa" stroke="#2e7d32" stroke-width="2"/>
+  <text x="475" y="138" font-size="12" font-weight="600" fill="#1b5e20">ticks: 0 to 1200</text>
+  <text x="475" y="155" font-size="10" fill="#333">then stop</text>
+  <text x="360" y="200" font-size="11" font-weight="600" fill="#2e7d32">More repeatable</text>
+</svg>

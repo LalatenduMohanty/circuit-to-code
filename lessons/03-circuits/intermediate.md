@@ -62,25 +62,31 @@ ______________________________________________________________________
 idea boards use to turn on lights and buzzers.
 
 **Parts Needed:** 5V Power, 1× push button, 1× 10kΩ resistor, 1× NPN transistor (2N3904
-/ 2N2222), 2× 220Ω resistors, 2× LEDs.
+/ 2N2222 — check pinout), 2× 220Ω resistors, 2× LEDs.
+
+**Pinout reminder:** 2N3904 is usually **E–B–C** (flat toward you). Many kit 2N2222 /
+PN2222A parts are **C–B–E**. Emitter still goes to GND in this circuit.
 
 **Schematic:**
 
 ![Circuit 1 transistor load](diagrams/intermediate-circuit-01-transistor-load.svg)
 
-**Symbols in this circuit:** button · 10kΩ · NPN · two LED branches · `GND`
+**Symbols in this circuit:** button · 10kΩ · NPN · two parallel LED branches · `GND`
 
 #### The Discovery (Observation)
 
 **Experiment:** Press the button. Both LEDs should light. Release — both go dark.
 
-**What happened?** One small control path turned on a heavier path with two LEDs.
+**What happened?** One small control path turned on two parallel LED branches — more
+collector current than a single LED alone.
 
 **The Concept:** The transistor is still an electronic switch (like Beginner Circuit 6),
-but now the collector path carries more work. A micro:bit or Arduino pin is like that
-tiny base signal — it should not try to feed a hungry motor by itself.
+but now the collector carries a heavier load (two bright branches in parallel). A
+micro:bit or Arduino pin is like that tiny base signal — it should not try to feed a
+hungry motor by itself.
 
-**Challenge:** Swap the two LEDs for one LED only. Does the button still feel the same?
+**Challenge:** Remove one LED branch so only one LED remains. Does the button still
+feel the same?
 
 **You built it!** You learned: small signal in, stronger switched load out.
 
@@ -242,7 +248,9 @@ You are ready for text-based boards that mix code with real wiring.
    (Python on a Pico — gentler text step after Scratch / MakeCode).
 2. **Or** [Guide to Arduino](../06-arduino/arduino.md) (Uno + C++ sketches) if you need
    that path now. You can do both; CircuitPython first is usually easier.
-3. Revisit the [micro:bit V2 guide](../04-microbit/microbit-v2.md) to try MakeCode
+3. After a text path → [Robot Missions](../07-robot-missions/robot-missions.md) (timed
+   missions and driver control).
+4. Revisit the [micro:bit V2 guide](../04-microbit/microbit-v2.md) to try MakeCode
    projects that use sensors and outputs with cleaner habits.
-4. Invent: combine a divider sensor idea with a transistor output (night light, soft
+5. Invent: combine a divider sensor idea with a transistor output (night light, soft
    start LED, or a motor that only runs when it is bright).

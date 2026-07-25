@@ -29,6 +29,9 @@ REQUIRED_DIAGRAMS = [
     "lessons/03-circuits/diagrams/intermediate-circuit-04-motor-driver.svg",
     "lessons/03-circuits/diagrams/intermediate-circuit-05-pwm-throttle.svg",
     "lessons/04-microbit/diagrams/microbit-v2-overview.jpg",
+    "lessons/07-robot-missions/diagrams/program-flow.svg",
+    "lessons/07-robot-missions/diagrams/brain-vs-motors.svg",
+    "lessons/07-robot-missions/diagrams/motor-counter.svg",
 ]
 
 LESSON_FILES = [
@@ -39,6 +42,7 @@ LESSON_FILES = [
     "lessons/04-microbit/microbit-v2.md",
     "lessons/05-circuitpython/circuitpython.md",
     "lessons/06-arduino/arduino.md",
+    "lessons/07-robot-missions/robot-missions.md",
 ]
 
 
@@ -93,6 +97,7 @@ def test_required_diagram_exists(repo_root: Path, relative: str) -> None:
         "lessons/03-circuits/beginner.md",
         "lessons/03-circuits/intermediate.md",
         "lessons/04-microbit/microbit-v2.md",
+        "lessons/07-robot-missions/robot-missions.md",
     ],
 )
 def test_lesson_references_existing_images(repo_root: Path, lesson: str) -> None:

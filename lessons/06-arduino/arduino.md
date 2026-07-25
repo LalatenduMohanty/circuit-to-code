@@ -180,15 +180,13 @@ ______________________________________________________________________
 You reached Arduino sketches on the core electronics path. Many learners also complete
 [CircuitPython](../05-circuitpython/circuitpython.md) (before or after this guide).
 
-1. **Invent and share** — combine a sensor (divider / pot / LDR) with an output (LED,
+1. Continue to [Robot Missions](../07-robot-missions/robot-missions.md) — timed missions
+   and driver control (classroom board or competition robot brain).
+2. **Invent and share** — combine a sensor (divider / pot / LDR) with an output (LED,
    buzzer, or transistor-driven motor).
-2. Prefer Python on a Pico? →
+3. Prefer Python on a Pico? →
    [Guide to CircuitPython](../05-circuitpython/circuitpython.md).
-3. Revisit [Beginner](../03-circuits/beginner.md) or
+4. Revisit [Beginner](../03-circuits/beginner.md) or
    [Intermediate Circuits](../03-circuits/intermediate.md) anytime wiring feels shaky.
-4. Revisit the [micro:bit guide](../04-microbit/microbit-v2.md) if you want more
+5. Revisit the [micro:bit guide](../04-microbit/microbit-v2.md) if you want more
    block-based practice.
-
-**Coming later on this course (planned):** Arduino schematic mission labs, ESP32, full
-Raspberry Pi computer projects, libraries and shields, and a capstone / certificate
-track. For now, keep building.
